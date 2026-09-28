@@ -200,56 +200,127 @@
             padding-left: 22px;
         }
 
-        /* --- AVATAR & CANVAS API PANJANG & BARA API --- */
+        /* --- INDIKATOR ONLINE DI POJOK KIRI ATAS PROFIL --- */
+        .status-badge-topleft {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-subtle);
+            z-index: 20;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-dot.online {
+            background-color: #00e676;
+            animation: sizeBreathing 1.5s ease-in-out infinite alternate;
+        }
+
+        .status-dot.offline {
+            background-color: var(--accent-red);
+            animation: sizeBreathing 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes sizeBreathing {
+            0% { transform: scale(0.8); }
+            100% { transform: scale(1.35); }
+        }
+
+        /* --- AVATAR & DUA GARIS API BERPUTAR --- */
         .avatar-wrapper {
             position: relative;
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
+            width: 160px;
+            height: 160px;
+            margin: 20px auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
         }
 
-        #fireCanvas {
+        /* Efek 2 Garis Api Berputar Melingkar */
+        .fire-ring-container {
             position: absolute;
-            top: -70px;
-            left: -70px;
-            width: 290px;
-            height: 290px;
-            z-index: 1;
+            inset: -12px;
+            border-radius: 50%;
             pointer-events: none;
+            z-index: 1;
+            animation: spinRing 3s linear infinite;
+        }
+
+        .fire-ring-container::before,
+        .fire-ring-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 3.5px solid transparent;
+        }
+
+        .fire-ring-container::before {
+            border-top-color: #facc15;
+            border-right-color: #f97316;
+            animation: pulseGlow1 1.5s ease-in-out infinite alternate;
+        }
+
+        .fire-ring-container::after {
+            inset: -6px;
+            border-bottom-color: #dc2626;
+            border-left-color: #ef4444;
+            animation: spinRingReverse 2.2s linear infinite;
+        }
+
+        @keyframes spinRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes spinRingReverse {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        @keyframes pulseGlow1 {
+            0% { filter: drop-shadow(0 0 4px #f97316); }
+            100% { filter: drop-shadow(0 0 12px #dc2626); }
         }
 
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 104px;
+            height: 104px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 0 25px rgba(239, 68, 68, 0.7), 0 0 45px rgba(249, 115, 22, 0.5);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
             border: 3.5px solid #ffffff;
             position: relative;
             z-index: 2;
             background: #ffffff;
-            animation: avatarPulse 2.5s ease-in-out infinite alternate;
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        @keyframes avatarPulse {
-            0% { transform: scale(1); box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
-            100% { transform: scale(1.06); box-shadow: 0 0 35px rgba(249, 115, 22, 0.9), 0 0 60px rgba(220, 38, 38, 0.6); }
-        }
-
         .avatar-wrapper:hover .avatar {
-            transform: scale(1.12) rotate(6deg);
+            transform: scale(1.08) rotate(5deg);
         }
 
         /* META VERIFIKASI PRESISI MENEMPEL DI FOTO */
         .verified-badge {
             position: absolute;
-            bottom: 22px;
-            right: 22px;
+            bottom: 24px;
+            right: 24px;
             background: linear-gradient(135deg, #0072ff, #00c6ff);
             color: white;
             width: 26px;
@@ -288,43 +359,6 @@
             font-weight: 500;
         }
 
-        /* STATUS ONLINE */
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #ffffff;
-            border: 1.5px solid var(--border-color);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.88rem;
-            font-weight: 700;
-            box-shadow: var(--shadow-subtle);
-            margin-bottom: 18px;
-        }
-
-        .status-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .status-dot.online {
-            background-color: #00e676;
-            animation: sizeBreathing 1.5s ease-in-out infinite alternate;
-        }
-
-        .status-dot.offline {
-            background-color: var(--accent-red);
-            animation: sizeBreathing 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes sizeBreathing {
-            0% { transform: scale(0.8); }
-            100% { transform: scale(1.35); }
-        }
-
         /* BADGE PROFIL DIKUNCI (GABISA DIPENCET) */
         .badge-container {
             display: flex;
@@ -333,6 +367,7 @@
             gap: 10px;
             pointer-events: none;
             user-select: none;
+            margin-top: 10px;
         }
 
         .badge-pill {
@@ -558,7 +593,7 @@
         .btn-order:hover { background: var(--primary-hover); box-shadow: 0 4px 12px var(--primary-glow); transform: scale(1.04); }
         .btn-order:hover i { transform: scale(1.25) rotate(15deg); }
 
-        /* --- TRAKTIR SHINJI KOPI DITUANG REALISTIK --- */
+        /* --- TRAKTIR SHINJI KOPI --- */
         .traktir-card {
             background: linear-gradient(135deg, #fff7ed, #ffedd5);
             border: 1.5px dashed #f97316;
@@ -1071,6 +1106,12 @@
     <div class="container">
         <!-- Profile Header -->
         <div class="profile-card">
+            <!-- Indikator Online di Pojok Kiri Atas Profil -->
+            <div class="status-badge-topleft">
+                <span id="status-dot" class="status-dot"></span>
+                <span id="status-text">Memeriksa...</span>
+            </div>
+
             <div class="menu-wrapper">
                 <button class="menu-btn" onclick="toggleMenu()" id="menuBtn" aria-label="Menu Navigasi">
                     <span></span>
@@ -1086,9 +1127,9 @@
                 </div>
             </div>
 
-            <!-- Avatar & Canvas Semburan Api Panjang Melingkar -->
+            <!-- Avatar & 2 Garis Api Berputar -->
             <div class="avatar-wrapper" title="Shinji Hirako Avatar">
-                <canvas id="fireCanvas" width="290" height="290"></canvas>
+                <div class="fire-ring-container"></div>
                 
                 <img id="userLogo" src="https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/9d83ffeb-380c-41c1-95c2-2405263f611e.jpg" alt="Shinji Hirako Store" class="avatar" onerror="handleLogoError()">
                 <div id="avatarText" class="avatar avatar-fallback" style="display: none;">SH</div>
@@ -1102,14 +1143,8 @@
             <h1 class="profile-title">Shinji Hirako</h1>
             <p class="profile-tagline">
                 Reseller MLBB & Free Fire Murah Terpercaya & Amanah Sejak <strong>2025</strong>. 
-                Melayani dengan cepat, profesional, dan ramah
+                Melayani dengan cepat, profesional, dan anti ramah
             </p>
-
-            <!-- Status Online Hijau Terang -->
-            <div class="status-badge">
-                <span id="status-dot" class="status-dot"></span>
-                <span id="status-text">Memeriksa...</span>
-            </div>
 
             <!-- Dikunci (Gabisa Dipencet) -->
             <div class="badge-container">
@@ -1186,9 +1221,9 @@
                         <div class="service-card">
                             <div class="service-info">
                                 <div class="service-icon"><i class="fa-solid fa-code"></i></div>
-                                <div class="service-name">Web Portofolio</div>
+                                <div class="service-name">Website Portofolio</div>
                             </div>
-                            <a href="https://wa.me/6283199265399?text=mau%20order%20buat%20web%portofolio%20bang" target="_blank" class="btn-order">
+                            <a href="https://wa.me/6283199265399?text=mau%20order%20jasa%20buat%20web%20portofolio%20bang" target="_blank" class="btn-order">
                                 <i class="fa-brands fa-whatsapp"></i> Order
                             </a>
                         </div>
@@ -1198,7 +1233,7 @@
                                 <div class="service-icon"><i class="fa-solid fa-user-gear"></i></div>
                                 <div class="service-name">Cein Moonton</div>
                             </div>
-                            <a href="https://wa.me/6283199265399?text=mau%20order%20cein%20moonton%20bang" target="_blank" class="btn-order">
+                            <a href="https://wa.me/6283199265399?text=mau%20order%20jasa%20cein%20moonton%20bang" target="_blank" class="btn-order">
                                 <i class="fa-brands fa-whatsapp"></i> Order
                             </a>
                         </div>
@@ -1218,7 +1253,8 @@
                                 <div class="service-icon"><i class="fa-solid fa-link"></i></div>
                                 <div class="service-name">Rebind</div>
                             </div>
-                            <a href="https://wa.me/6283199265399?text=mau%20order%20jasa%20rebind%20bang" target="_blank" class="btn-order">
+                            <a href="https://wa.me/6283199265399?text=mau%20order%20jasa%20rebind%20bang
+                        " target="_blank" class="btn-order">
                                 <i class="fa-brands fa-whatsapp"></i> Order
                             </a>
                         </div>
@@ -1238,7 +1274,7 @@
                                 <div class="service-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
                                 <div class="service-name">Out Device Kgm</div>
                             </div>
-                            <a href="https://wa.me/6283199265399?text=mau%20order%20out%20device%20Kgm%20bang" target="_blank" class="btn-order">
+                            <a href="https://wa.me/6283199265399?text=mau%20order%20out%20device%20kgm%20bang" target="_blank" class="btn-order">
                                 <i class="fa-brands fa-whatsapp"></i> Order
                             </a>
                         </div>
@@ -1254,7 +1290,7 @@
                     </div>
                     <div>
                         <div class="traktir-title">Traktir shinji☕</div>
-                        <div class="traktir-sub">Klik di sini untuk lihat QRIS</div>
+                        <div class="traktir-sub">Klik di sini untuk lihat QRIS / Donasi</div>
                     </div>
                 </div>
                 <i class="fa-solid fa-qrcode" style="font-size: 1.4rem; color: #f97316;"></i>
@@ -1270,10 +1306,10 @@
                 <div class="testi-card-wrapper">
                     <div class="testi-header-stats">
                         <div class="testi-stat-item">
-                            <i class="fa-solid fa-chart-line"></i> Testi : <span>2.200+</span>
+                            <i class=>Testi : <span>2.200+</span>
                         </div>
                         <div class="testi-stat-item">
-                            <i class="fa-solid fa-trophy"></i> Big Testi : <span>1.800.000</span>
+                            <i class=>Big Testi : <span>1.800.000</span>
                         </div>
                     </div>
 
@@ -1324,12 +1360,12 @@
                         <div class="faq-question">
                             <div class="faq-title-wrap">
                                 <i class="fa-solid fa-shield-halved icon-shield-dewa"></i>
-                                <span>Apakah boleh mc/rekber saat beli akun? </span>
+                                <span>Apakah transaksi di sini boleh menggunakan rekber/mc?</span>
                             </div>
                             <i class="fa-solid fa-chevron-down faq-icon"></i>
                         </div>
                         <div class="faq-answer">
-                            Boleh, asalkan sama-sama kenal. dan hanya nominal besar
+                             Boleh, asalkan sama-sama kenal (kecuali nominal receh) 
                         </div>
                     </div>
 
@@ -1337,12 +1373,12 @@
                         <div class="faq-question">
                             <div class="faq-title-wrap">
                                 <i class="fa-solid fa-stopwatch icon-timer-dewa"></i>
-                                <span>Apakah store ini dijamain aman?</span>
+                                <span>Apakah store ini aman? </span>
                             </div>
                             <i class="fa-solid fa-chevron-down faq-icon"></i>
                         </div>
                         <div class="faq-answer">
-                            Terpercaya sejak 2025 dengan ribuan transaksi yang aman dan suskes
+                            Terpercaya sejak 2025 dengan ribuan transaksi aman dan sukses
                         </div>
                     </div>
 
@@ -1355,7 +1391,7 @@
                             <i class="fa-solid fa-chevron-down faq-icon"></i>
                         </div>
                         <div class="faq-answer">
-                            Kami menerima pembayaran via QRIS All Payment, DANA dan Transfer Bank Jago
+                            Kami menerima pembayaran via QRIS All Payment, DANA Dan Bank JAGO
                         </div>
                     </div>
                 </div>
@@ -1516,7 +1552,6 @@
                     </div>
                 </div>
 
-                <!-- Tips Kick Device KGM dengan Ikon Terpasang & Animasi Getar -->
                 <div class="tip-card" data-tags="mlbb">
                     <div class="tip-icon-box">
                         <i class="fa-solid fa-mobile-screen-button icon-kick-kgm"></i>
@@ -1602,7 +1637,7 @@
                 <div class="music-disc"><i class="fa-solid fa-compact-disc"></i></div>
                 <div class="music-text">
                     <span class="music-title">24/7 Song</span>
-                    <span class="music-sub" id="musicSub">247_romario.mp3</span>
+                    <span class="music-sub" id="Pencet play untuk memutar lagu</span>
                 </div>
             </div>
             <button class="btn-play" id="playBtn" onclick="togglePlay()">
@@ -1615,135 +1650,6 @@
     <audio id="bgMusic" loop src="247_romario.mp3" preload="auto"></audio>
 
     <script>
-        // --- HYPER-REALISTIC EXTENDED FIRE & EMBERS CANVAS ENGINE ---
-        const canvas = document.getElementById('fireCanvas');
-        const ctx = canvas.getContext('2d');
-        const centerX = 145;
-        const centerY = 145;
-        const orbitRadius = 72;
-
-        let particles = [];
-        let sparks = [];
-        let angleOffset = 0;
-
-        class FlameParticle {
-            constructor(x, y, angle) {
-                this.x = x + (Math.random() - 0.5) * 8;
-                this.y = y + (Math.random() - 0.5) * 8;
-                this.vx = (Math.random() - 0.5) * 2.2 + Math.cos(angle + Math.PI/2) * 2.8;
-                this.vy = (Math.random() - 0.5) * 2.2 + Math.sin(angle + Math.PI/2) * 2.8 - 1.2;
-                this.life = Math.random() * 35 + 25;
-                this.maxLife = this.life;
-                this.size = Math.random() * 22 + 12;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                this.size *= 0.95;
-                this.life--;
-            }
-
-            draw(ctx) {
-                const ratio = this.life / this.maxLife;
-                ctx.save();
-                ctx.globalCompositeOperation = 'screen';
-                
-                let gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-                if (ratio > 0.65) {
-                    gradient.addColorStop(0, 'rgba(255, 255, 240, 0.95)');
-                    gradient.addColorStop(0.3, 'rgba(251, 191, 36, 0.85)');
-                    gradient.addColorStop(0.7, 'rgba(239, 68, 68, 0.5)');
-                    gradient.addColorStop(1, 'rgba(185, 28, 28, 0)');
-                } else if (ratio > 0.3) {
-                    gradient.addColorStop(0, 'rgba(249, 115, 22, 0.8)');
-                    gradient.addColorStop(0.5, 'rgba(220, 38, 38, 0.45)');
-                    gradient.addColorStop(1, 'rgba(127, 29, 29, 0)');
-                } else {
-                    gradient.addColorStop(0, 'rgba(150, 20, 20, 0.4)');
-                    gradient.addColorStop(1, 'rgba(15, 23, 42, 0)');
-                }
-
-                ctx.fillStyle = gradient;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-
-        class SparkEmber {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.vx = (Math.random() - 0.5) * 3;
-                this.vy = -Math.random() * 3.5 - 1.5;
-                this.life = Math.random() * 40 + 20;
-                this.size = Math.random() * 3 + 1.5;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                this.life--;
-            }
-            draw(ctx) {
-                ctx.save();
-                ctx.globalCompositeOperation = 'screen';
-                ctx.fillStyle = 'rgba(250, 204, 21, 0.9)';
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = '#f97316';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-
-        function animateFire() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            angleOffset += 0.07;
-
-            // 3 Ekor Panjang Fireball Memutar
-            for (let i = 0; i < 3; i++) {
-                let currentAngle = angleOffset + (i * Math.PI * 2 / 3);
-                let px = centerX + Math.cos(currentAngle) * orbitRadius;
-                let py = centerY + Math.sin(currentAngle) * orbitRadius;
-
-                // Tambahkan jejak ekor panjang
-                for (let k = 0; k < 5; k++) {
-                    let trailAngle = currentAngle - (k * 0.08);
-                    let tx = centerX + Math.cos(trailAngle) * (orbitRadius + (k * 2));
-                    let ty = centerY + Math.sin(trailAngle) * (orbitRadius + (k * 2));
-                    particles.push(new FlameParticle(tx, ty, trailAngle));
-                }
-
-                if (Math.random() < 0.6) {
-                    sparks.push(new SparkEmber(px, py));
-                }
-            }
-
-            // Render Flames
-            for (let i = particles.length - 1; i >= 0; i--) {
-                particles[i].update();
-                particles[i].draw(ctx);
-                if (particles[i].life <= 0 || particles[i].size < 1) {
-                    particles.splice(i, 1);
-                }
-            }
-
-            // Render Sparks / Embers
-            for (let i = sparks.length - 1; i >= 0; i--) {
-                sparks[i].update();
-                sparks[i].draw(ctx);
-                if (sparks[i].life <= 0) {
-                    sparks.splice(i, 1);
-                }
-            }
-
-            requestAnimationFrame(animateFire);
-        }
-        animateFire();
-
         function handleLogoError() {
             document.getElementById('userLogo').style.display = 'none';
             document.getElementById('avatarText').style.display = 'flex';
@@ -1763,7 +1669,7 @@
                 statusText.innerHTML = 'Online';
             } else {
                 statusDot.className = 'status-dot offline';
-                statusText.innerHTML = 'Offline';
+                statusText.innerHTML = 'Offlinei';
             }
         }
         checkWITAStatus();
