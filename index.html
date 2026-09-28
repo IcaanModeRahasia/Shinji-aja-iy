@@ -200,7 +200,7 @@
             padding-left: 22px;
         }
 
-        /* --- 3 ANIME FIREBALLS EKOR MANJANG MUTAR --- */
+        /* --- AVATAR & CANVAS API REALISTIS --- */
         .avatar-wrapper {
             position: relative;
             width: 160px;
@@ -212,107 +212,63 @@
             cursor: pointer;
         }
 
-        .anime-fireball-container {
+        /* Canvas Api Volumetrik Memutar */
+        #fireCanvas {
             position: absolute;
-            inset: -25px;
+            top: -50px;
+            left: -50px;
+            width: 260px;
+            height: 260px;
             z-index: 1;
             pointer-events: none;
-            animation: spinFireballs 3.5s linear infinite;
-        }
-
-        @keyframes spinFireballs {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Pendaran Energi Api Realistis di Tengah */
-        .flame-aura-pulse {
-            position: absolute;
-            inset: -10px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(239, 68, 68, 0.45) 0%, rgba(249, 115, 22, 0.25) 50%, transparent 75%);
-            filter: blur(14px);
-            animation: auraBreathing 1.8s ease-in-out infinite alternate;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        @keyframes auraBreathing {
-            0% { transform: scale(0.9); opacity: 0.5; }
-            100% { transform: scale(1.18); opacity: 1; }
-        }
-
-        /* 3 Fireball SVG dengan Ekor Melengkung Panjang */
-        .fireball-svg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0; left: 0;
-        }
-
-        .fb-1 { transform: rotate(0deg); }
-        .fb-2 { transform: rotate(120deg); }
-        .fb-3 { transform: rotate(240deg); }
-
-        /* Partikel Percikan Api / Ember Sparks */
-        .ember-spark {
-            position: absolute;
-            width: 5px; height: 5px;
-            background: #facc15;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #f97316;
-            animation: sparkFly 1.5s infinite ease-out;
-        }
-
-        .sp-1 { top: 10px; left: 50%; animation-delay: 0s; }
-        .sp-2 { bottom: 20px; right: 10px; animation-delay: 0.5s; }
-        .sp-3 { bottom: 20px; left: 10px; animation-delay: 1s; }
-
-        @keyframes sparkFly {
-            0% { opacity: 1; transform: scale(1) translateY(0); }
-            100% { opacity: 0; transform: scale(0.2) translateY(-30px) translateX(15px); }
         }
 
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 104px;
+            height: 104px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 8px 25px var(--primary-glow);
-            border: 4px solid #ffffff;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.6), 0 0 35px rgba(249, 115, 22, 0.4);
+            border: 3.5px solid #ffffff;
             position: relative;
             z-index: 2;
             background: #ffffff;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: avatarPulse 2.8s ease-in-out infinite alternate;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes avatarPulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(239, 68, 68, 0.5); }
+            100% { transform: scale(1.05); box-shadow: 0 0 30px rgba(249, 115, 22, 0.8), 0 0 50px rgba(220, 38, 38, 0.5); }
         }
 
         .avatar-wrapper:hover .avatar {
-            transform: scale(1.08) rotate(5deg);
+            transform: scale(1.12) rotate(6deg);
         }
 
+        /* META VERIFIKASI PRESISI NEMPEL FOTO */
         .verified-badge {
             position: absolute;
-            bottom: 12px;
-            right: 14px;
+            bottom: 26px;
+            right: 26px;
             background: linear-gradient(135deg, #0072ff, #00c6ff);
             color: white;
-            width: 32px;
-            height: 32px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
-            border: 2px solid white;
+            font-size: 0.75rem;
+            border: 2px solid #ffffff;
             z-index: 3;
-            box-shadow: 0 4px 12px rgba(0, 114, 255, 0.4);
-            overflow: hidden;
-            animation: badgePulse 2s infinite alternate;
+            box-shadow: 0 4px 10px rgba(0, 114, 255, 0.5);
+            animation: badgeBounce 2s infinite alternate;
         }
 
-        @keyframes badgePulse {
+        @keyframes badgeBounce {
             0% { transform: scale(1); }
-            100% { transform: scale(1.15); }
+            100% { transform: scale(1.18); }
         }
 
         .profile-title {
@@ -435,7 +391,7 @@
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* --- LINKS GRID & ANIMASI TAUTAN RESMI --- */
+        /* --- LINKS GRID --- */
         .links-grid {
             display: flex;
             flex-direction: column;
@@ -891,6 +847,19 @@
             animation: tipIconBounce 3s infinite ease-in-out;
         }
 
+        /* ANIMASI KICK DEV KGM KHUSUS */
+        .icon-kick-kgm {
+            animation: kickShake 1.6s infinite cubic-bezier(0.36, 0.07, 0.19, 0.97) !important;
+            color: #ef4444;
+        }
+
+        @keyframes kickShake {
+            10%, 90% { transform: translate3d(-1px, 0, 0) rotate(-10deg); }
+            20%, 80% { transform: translate3d(2px, 0, 0) rotate(10deg); }
+            30%, 50%, 70% { transform: translate3d(-3px, 0, 0) rotate(-15deg); color: #dc2626; }
+            40%, 60% { transform: translate3d(3px, 0, 0) rotate(15deg); }
+        }
+
         @keyframes tipIconBounce {
             0%, 100% { transform: scale(1) rotate(0deg); }
             50% { transform: scale(1.2) rotate(10deg); color: #ef4444; }
@@ -1118,58 +1087,14 @@
                 </div>
             </div>
 
-            <!-- Avatar 3 Anime Fireballs Ekor Panjang Mutar -->
+            <!-- Avatar & Canvas Semburan Api Hyper-Realistic -->
             <div class="avatar-wrapper" title="Shinji Hirako Avatar">
-                <div class="flame-aura-pulse"></div>
-
-                <div class="anime-fireball-container">
-                    <div class="ember-spark sp-1"></div>
-                    <div class="ember-spark sp-2"></div>
-                    <div class="ember-spark sp-3"></div>
-
-                    <!-- SVG 3 Fireball Ekor Panjang Saling Mengejar -->
-                    <svg class="fireball-svg fb-1" viewBox="0 0 200 200">
-                        <defs>
-                            <linearGradient id="fireGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#facc15" />
-                                <stop offset="40%" stop-color="#f97316" />
-                                <stop offset="100%" stop-color="#dc2626" stop-opacity="0" />
-                            </linearGradient>
-                        </defs>
-                        <!-- Ekor Manjang -->
-                        <path d="M 100,12 A 88,88 0 0,1 188,100" fill="none" stroke="url(#fireGrad1)" stroke-width="14" stroke-linecap="round" />
-                        <!-- Kepala Api -->
-                        <circle cx="188" cy="100" r="10" fill="#facc15" filter="drop-shadow(0 0 8px #f97316)" />
-                    </svg>
-
-                    <svg class="fireball-svg fb-2" viewBox="0 0 200 200">
-                        <defs>
-                            <linearGradient id="fireGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#facc15" />
-                                <stop offset="40%" stop-color="#ef4444" />
-                                <stop offset="100%" stop-color="#b91c1c" stop-opacity="0" />
-                            </linearGradient>
-                        </defs>
-                        <path d="M 100,12 A 88,88 0 0,1 188,100" fill="none" stroke="url(#fireGrad2)" stroke-width="14" stroke-linecap="round" />
-                        <circle cx="188" cy="100" r="10" fill="#facc15" filter="drop-shadow(0 0 8px #ef4444)" />
-                    </svg>
-
-                    <svg class="fireball-svg fb-3" viewBox="0 0 200 200">
-                        <defs>
-                            <linearGradient id="fireGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#ffffff" />
-                                <stop offset="30%" stop-color="#f97316" />
-                                <stop offset="100%" stop-color="#dc2626" stop-opacity="0" />
-                            </linearGradient>
-                        </defs>
-                        <path d="M 100,12 A 88,88 0 0,1 188,100" fill="none" stroke="url(#fireGrad3)" stroke-width="14" stroke-linecap="round" />
-                        <circle cx="188" cy="100" r="10" fill="#ffffff" filter="drop-shadow(0 0 8px #facc15)" />
-                    </svg>
-                </div>
+                <canvas id="fireCanvas" width="260" height="260"></canvas>
                 
                 <img id="userLogo" src="https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/9d83ffeb-380c-41c1-95c2-2405263f611e.jpg" alt="Shinji Hirako Store" class="avatar" onerror="handleLogoError()">
                 <div id="avatarText" class="avatar avatar-fallback" style="display: none;">SH</div>
                 
+                <!-- Meta Verifikasi Presisi Nempel Foto -->
                 <div class="verified-badge" title="Terverifikasi Premium">
                     <i class="fa-solid fa-check"></i>
                 </div>
@@ -1592,8 +1517,11 @@
                     </div>
                 </div>
 
+                <!-- Tips Kick Dev KGM dengan Ikon Terpasang & Animasi Getar Dewa -->
                 <div class="tip-card" data-tags="mlbb">
-                    <div class="tip-icon-box"><i class="fa-solid fa-mobile-xmark"></i></div>
+                    <div class="tip-icon-box">
+                        <i class="fa-solid fa-mobile-xmark icon-kick-kgm"></i>
+                    </div>
                     <div class="tip-body">
                         <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #mlbb</span></div>
                         <h3 class="tip-title">Cara kick device tapi kgm</h3>
@@ -1688,12 +1616,92 @@
     <audio id="bgMusic" loop src="247_romario.mp3" preload="auto"></audio>
 
     <script>
+        // --- REALISTIC ORGANIC FIRE ENGINE CANVAS (NO PNG) ---
+        const canvas = document.getElementById('fireCanvas');
+        const ctx = canvas.getContext('2d');
+        const centerX = 130;
+        const centerY = 130;
+        const orbitRadius = 64;
+
+        let particles = [];
+        let angleOffset = 0;
+
+        class FireParticle {
+            constructor(x, y, angle) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 1.5 + Math.cos(angle + Math.PI/2) * 1.8;
+                this.vy = (Math.random() - 0.5) * 1.5 + Math.sin(angle + Math.PI/2) * 1.8;
+                this.life = Math.random() * 25 + 20;
+                this.maxLife = this.life;
+                this.size = Math.random() * 16 + 10;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.size *= 0.94;
+                this.life--;
+            }
+
+            draw(ctx) {
+                const ratio = this.life / this.maxLife;
+                ctx.save();
+                ctx.globalCompositeOperation = 'screen';
+                
+                let gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+                if (ratio > 0.6) {
+                    gradient.addColorStop(0, 'rgba(255, 255, 220, 0.95)');
+                    gradient.addColorStop(0.3, 'rgba(251, 146, 60, 0.8)');
+                    gradient.addColorStop(0.8, 'rgba(239, 68, 68, 0.4)');
+                    gradient.addColorStop(1, 'rgba(185, 28, 28, 0)');
+                } else {
+                    gradient.addColorStop(0, 'rgba(249, 115, 22, 0.7)');
+                    gradient.addColorStop(0.5, 'rgba(220, 38, 38, 0.35)');
+                    gradient.addColorStop(1, 'rgba(15, 23, 42, 0)');
+                }
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function animateFire() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            angleOffset += 0.05;
+
+            // Generate 3 Semburan Api
+            for (let i = 0; i < 3; i++) {
+                let currentAngle = angleOffset + (i * Math.PI * 2 / 3);
+                let px = centerX + Math.cos(currentAngle) * orbitRadius;
+                let py = centerY + Math.sin(currentAngle) * orbitRadius;
+
+                for (let k = 0; k < 4; k++) {
+                    particles.push(new FireParticle(px, py, currentAngle));
+                }
+            }
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                particles[i].update();
+                particles[i].draw(ctx);
+                if (particles[i].life <= 0 || particles[i].size < 1) {
+                    particles.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(animateFire);
+        }
+        animateFire();
+
         function handleLogoError() {
             document.getElementById('userLogo').style.display = 'none';
             document.getElementById('avatarText').style.display = 'flex';
         }
 
-        // 1. Status Online Automatic (WITA)
+        // Status Online WITA
         function checkWITAStatus() {
             const now = new Date();
             const utcHours = now.getUTCHours();
@@ -1713,7 +1721,6 @@
         checkWITAStatus();
         setInterval(checkWITAStatus, 30000);
 
-        // 2. Navigation Dropdown
         function toggleMenu() {
             document.getElementById('dropdownMenu').classList.toggle('show');
         }
@@ -1748,7 +1755,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 3. FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(item => {
             item.addEventListener('click', () => {
                 const parent = item.parentElement;
@@ -1759,7 +1765,6 @@
             });
         });
 
-        // 4. Filtering Tips
         function filterTips(tag, btnElement) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
@@ -1795,7 +1800,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // 5. Pemutar Musik "24/7 Song"
         const bgMusic = document.getElementById('bgMusic');
         const playIcon = document.getElementById('playIcon');
         const musicBar = document.getElementById('musicBar');
