@@ -240,11 +240,11 @@
             100% { transform: scale(1.35); }
         }
 
-        /* --- AVATAR & DUA GARIS API BERPUTAR --- */
+        /* --- AVATAR & FULL GARIS PUTUS-PUTUS MELINGKAR 360° --- */
         .avatar-wrapper {
             position: relative;
-            width: 150px;
-            height: 150px;
+            width: 155px;
+            height: 155px;
             margin: 20px auto 20px;
             display: flex;
             align-items: center;
@@ -252,50 +252,21 @@
             cursor: pointer;
         }
 
-        .fire-ring-container {
+        /* Full Garis Putus-Putus Melingkar 360° Berputar */
+        .dashed-ring {
             position: absolute;
-            inset: -8px;
+            inset: -6px;
             border-radius: 50%;
+            border: 3.5px dashed var(--primary);
             pointer-events: none;
             z-index: 1;
-            animation: spinRing 3s linear infinite;
+            animation: spinDashedRing 10s linear infinite;
+            filter: drop-shadow(0 0 4px rgba(220, 38, 38, 0.3));
         }
 
-        .fire-ring-container::before,
-        .fire-ring-container::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            border: 3.5px solid transparent;
-        }
-
-        .fire-ring-container::before {
-            border-top-color: #facc15;
-            border-right-color: #f97316;
-            animation: pulseGlow1 1.5s ease-in-out infinite alternate;
-        }
-
-        .fire-ring-container::after {
-            inset: -5px;
-            border-bottom-color: #dc2626;
-            border-left-color: #ef4444;
-            animation: spinRingReverse 2.2s linear infinite;
-        }
-
-        @keyframes spinRing {
+        @keyframes spinDashedRing {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        @keyframes spinRingReverse {
-            0% { transform: rotate(360deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-        @keyframes pulseGlow1 {
-            0% { filter: drop-shadow(0 0 4px #f97316); }
-            100% { filter: drop-shadow(0 0 10px #dc2626); }
         }
 
         .avatar {
@@ -1126,9 +1097,9 @@
                 </div>
             </div>
 
-            <!-- Avatar & 2 Garis Api Berputar -->
+            <!-- Avatar & Full Garis Putus-Putus Melingkar 360° -->
             <div class="avatar-wrapper" title="Shinji Hirako Avatar">
-                <div class="fire-ring-container"></div>
+                <div class="dashed-ring"></div>
                 
                 <img id="userLogo" src="https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/9d83ffeb-380c-41c1-95c2-2405263f611e.jpg" alt="Shinji Hirako Store" class="avatar" onerror="handleLogoError()">
                 <div id="avatarText" class="avatar avatar-fallback" style="display: none;">SH</div>
