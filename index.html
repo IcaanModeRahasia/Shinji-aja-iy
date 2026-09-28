@@ -82,7 +82,7 @@
             gap: 28px;
         }
 
-        /* --- PROFILE CARD SPEK DEWA --- */
+        /* --- PROFILE CARD --- */
         .profile-card {
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(16px);
@@ -104,9 +104,7 @@
         .profile-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 6px;
             background: linear-gradient(90deg, #dc2626, #ef4444, #f87171, #dc2626);
             background-size: 200% 100%;
@@ -202,11 +200,11 @@
             padding-left: 22px;
         }
 
-        /* --- 3 SEMBURAN API REALISTIS & PARTIKEL BERGERAK --- */
+        /* --- 3 ANIME FIREBALLS EKOR MANJANG MUTAR --- */
         .avatar-wrapper {
             position: relative;
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
@@ -214,58 +212,65 @@
             cursor: pointer;
         }
 
-        .fire-orbit-container {
+        .anime-fireball-container {
             position: absolute;
-            inset: -15px;
-            border-radius: 50%;
-            animation: rotateOrbit 7s linear infinite;
+            inset: -25px;
             z-index: 1;
             pointer-events: none;
+            animation: spinFireballs 3.5s linear infinite;
         }
 
-        @keyframes rotateOrbit {
+        @keyframes spinFireballs {
+            0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
-        /* 3 Emitter Semburan Api Realistis */
-        .fire-emitter {
+        /* Pendaran Energi Api Realistis di Tengah */
+        .flame-aura-pulse {
             position: absolute;
-            width: 18px;
-            height: 18px;
-            background: radial-gradient(circle, #f97316 20%, #ef4444 60%, transparent 100%);
+            inset: -10px;
             border-radius: 50%;
-            filter: drop-shadow(0 0 10px #f97316) drop-shadow(0 0 20px #ef4444);
-            animation: flameBurst 1.2s ease-in-out infinite alternate;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.45) 0%, rgba(249, 115, 22, 0.25) 50%, transparent 75%);
+            filter: blur(14px);
+            animation: auraBreathing 1.8s ease-in-out infinite alternate;
+            z-index: 0;
+            pointer-events: none;
         }
 
-        .emitter-1 { top: -4px; left: 50%; transform: translateX(-50%); }
-        .emitter-2 { bottom: 10px; right: -4px; }
-        .emitter-3 { bottom: 10px; left: -4px; }
-
-        @keyframes flameBurst {
-            0% { transform: scale(0.8); opacity: 0.8; }
-            100% { transform: scale(1.5); opacity: 1; filter: drop-shadow(0 0 15px #f97316) drop-shadow(0 0 25px #dc2626); }
+        @keyframes auraBreathing {
+            0% { transform: scale(0.9); opacity: 0.5; }
+            100% { transform: scale(1.18); opacity: 1; }
         }
 
-        /* Partikel Api Bergerak Melayang */
-        .ember-particle {
+        /* 3 Fireball SVG dengan Ekor Melengkung Panjang */
+        .fireball-svg {
             position: absolute;
-            width: 6px;
-            height: 6px;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+        }
+
+        .fb-1 { transform: rotate(0deg); }
+        .fb-2 { transform: rotate(120deg); }
+        .fb-3 { transform: rotate(240deg); }
+
+        /* Partikel Percikan Api / Ember Sparks */
+        .ember-spark {
+            position: absolute;
+            width: 5px; height: 5px;
             background: #facc15;
             border-radius: 50%;
-            pointer-events: none;
-            opacity: 0;
-            animation: floatEmber 2.2s infinite ease-out;
+            box-shadow: 0 0 10px #f97316;
+            animation: sparkFly 1.5s infinite ease-out;
         }
 
-        .particle-1 { top: 0; left: 50%; animation-delay: 0s; }
-        .particle-2 { bottom: 20px; right: 0; animation-delay: 0.7s; }
-        .particle-3 { bottom: 20px; left: 0; animation-delay: 1.4s; }
+        .sp-1 { top: 10px; left: 50%; animation-delay: 0s; }
+        .sp-2 { bottom: 20px; right: 10px; animation-delay: 0.5s; }
+        .sp-3 { bottom: 20px; left: 10px; animation-delay: 1s; }
 
-        @keyframes floatEmber {
-            0% { opacity: 1; transform: translateY(0) scale(1); }
-            100% { opacity: 0; transform: translateY(-35px) translateX(12px) scale(0.2); }
+        @keyframes sparkFly {
+            0% { opacity: 1; transform: scale(1) translateY(0); }
+            100% { opacity: 0; transform: scale(0.2) translateY(-30px) translateX(15px); }
         }
 
         .avatar {
@@ -287,8 +292,8 @@
 
         .verified-badge {
             position: absolute;
-            bottom: 6px;
-            right: 8px;
+            bottom: 12px;
+            right: 14px;
             background: linear-gradient(135deg, #0072ff, #00c6ff);
             color: white;
             width: 32px;
@@ -328,7 +333,7 @@
             font-weight: 500;
         }
 
-        /* STATUS BADGE ONLINE HIJAU TERANG BESAR KECIL */
+        /* STATUS BADGE ONLINE HIJAU TERANG */
         .status-badge {
             display: inline-flex;
             align-items: center;
@@ -365,13 +370,13 @@
             100% { transform: scale(1.35); }
         }
 
-        /* BAGIAN PROFIL HARGA MURAH, 100% TERPERCAYA, PROSES KILAT DIKUNCI (GABISA DIPENCET) */
+        /* BADGE PROFIL DIKUNCI (GABISA DIPENCET) */
         .badge-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
-            pointer-events: none; /* Dikunci agar tidak bisa dipencet/interaksi */
+            pointer-events: none;
             user-select: none;
         }
 
@@ -496,7 +501,7 @@
         .btn-link:hover .btn-icon { transform: scale(1.25) rotate(-12deg); }
         .btn-link:hover .arrow-icon { transform: translateX(8px) scale(1.25); color: var(--primary); }
 
-        /* --- HORIZONTAL SLIDER JASA & ANIMASI KARTU JASA --- */
+        /* --- HORIZONTAL SLIDER JASA --- */
         .services-wrapper {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
@@ -505,7 +510,6 @@
             box-shadow: var(--shadow-subtle);
         }
 
-        /* NOTE JASA : DIPASTIKAN TIDAK BERPUTAR */
         .note-badge {
             display: inline-flex;
             align-items: center;
@@ -520,7 +524,7 @@
             margin-bottom: 16px;
         }
 
-        .note-badge i { transform: none !important; animation: none !important; } /* Garansi tidak berputar */
+        .note-badge i { transform: none !important; animation: none !important; }
 
         .horizontal-slider {
             display: flex;
@@ -629,22 +633,14 @@
             transition: var(--transition-smooth);
         }
 
-        /* Animasi Tuang Kopi Realistik pada Ikon Cangkir */
         .traktir-icon i.icon-coffee-pour {
             animation: coffeePourAnim 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         @keyframes coffeePourAnim {
-            0%, 100% {
-                transform: rotate(0deg) translateY(0);
-            }
-            30% {
-                transform: rotate(-42deg) translateY(-2px);
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-            }
-            60% {
-                transform: rotate(-35deg) translateY(0);
-            }
+            0%, 100% { transform: rotate(0deg) translateY(0); }
+            30% { transform: rotate(-42deg) translateY(-2px); filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); }
+            60% { transform: rotate(-35deg) translateY(0); }
         }
 
         .traktir-title { font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 800; color: #9a3412; }
@@ -686,7 +682,6 @@
         }
 
         @keyframes pulseStar { 0% { transform: scale(1); } 100% { transform: scale(1.3); } }
-
         .testi-stat-item span { color: var(--primary); font-weight: 800; }
 
         .testi-slider {
@@ -725,7 +720,7 @@
             object-fit: cover;
         }
 
-        /* --- FAQ ACCORDION DENGAN ANIMASI DI SELURUH IKON --- */
+        /* --- FAQ ACCORDION --- */
         .faq-section {
             display: flex;
             flex-direction: column;
@@ -762,7 +757,6 @@
             gap: 12px;
         }
 
-        /* Animasi Ikon FAQ 1: Shield Pulse Dewa */
         .icon-shield-dewa {
             color: #dc2626;
             font-size: 1.2rem;
@@ -774,7 +768,6 @@
             50% { transform: scale(1.3) rotate(-8deg); filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.8)); color: #ef4444; }
         }
 
-        /* Animasi Ikon FAQ 2: Timer Shake */
         .icon-timer-dewa {
             color: #dc2626;
             font-size: 1.2rem;
@@ -788,7 +781,6 @@
             60% { transform: scale(1) rotate(0deg); }
         }
 
-        /* Animasi Ikon FAQ 3: Card Slide 3D */
         .icon-card-dewa {
             color: #dc2626;
             font-size: 1.2rem;
@@ -822,7 +814,7 @@
         .faq-card.active .faq-icon { transform: rotate(180deg); color: var(--primary); }
         .faq-card.active .faq-answer { max-height: 200px; opacity: 1; padding: 14px 20px 18px; }
 
-        /* --- HASHTAG FILTER & TIPS CARDS WITH FULL ICON ANIMATIONS --- */
+        /* --- HASHTAG FILTER & TIPS CARDS --- */
         .filter-container {
             display: flex;
             gap: 8px;
@@ -895,7 +887,6 @@
             transition: var(--transition-smooth);
         }
 
-        /* ANIMASI CONTINUOUS IKON SEMUA TIPS JB */
         .tip-icon-box i {
             animation: tipIconBounce 3s infinite ease-in-out;
         }
@@ -914,7 +905,6 @@
         .tip-card:hover .tip-icon-box i { color: white !important; filter: none !important; }
 
         .tip-body { flex: 1; }
-
         .tip-tags { display: flex; gap: 6px; margin-bottom: 6px; }
 
         .tip-tag-pill {
@@ -1128,17 +1118,53 @@
                 </div>
             </div>
 
-            <!-- Avatar 3 Semburan Api Realistis & Partikel Melayang -->
+            <!-- Avatar 3 Anime Fireballs Ekor Panjang Mutar -->
             <div class="avatar-wrapper" title="Shinji Hirako Avatar">
-                <div class="fire-orbit-container">
-                    <div class="fire-emitter emitter-1"></div>
-                    <div class="ember-particle particle-1"></div>
-                    
-                    <div class="fire-emitter emitter-2"></div>
-                    <div class="ember-particle particle-2"></div>
+                <div class="flame-aura-pulse"></div>
 
-                    <div class="fire-emitter emitter-3"></div>
-                    <div class="ember-particle particle-3"></div>
+                <div class="anime-fireball-container">
+                    <div class="ember-spark sp-1"></div>
+                    <div class="ember-spark sp-2"></div>
+                    <div class="ember-spark sp-3"></div>
+
+                    <!-- SVG 3 Fireball Ekor Panjang Saling Mengejar -->
+                    <svg class="fireball-svg fb-1" viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="fireGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#facc15" />
+                                <stop offset="40%" stop-color="#f97316" />
+                                <stop offset="100%" stop-color="#dc2626" stop-opacity="0" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Ekor Manjang -->
+                        <path d="M 100,12 A 88,88 0 0,1 188,100" fill="none" stroke="url(#fireGrad1)" stroke-width="14" stroke-linecap="round" />
+                        <!-- Kepala Api -->
+                        <circle cx="188" cy="100" r="10" fill="#facc15" filter="drop-shadow(0 0 8px #f97316)" />
+                    </svg>
+
+                    <svg class="fireball-svg fb-2" viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="fireGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#facc15" />
+                                <stop offset="40%" stop-color="#ef4444" />
+                                <stop offset="100%" stop-color="#b91c1c" stop-opacity="0" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 100,12 A 88,88 0 0,1 188,100" fill="none" stroke="url(#fireGrad2)" stroke-width="14" stroke-linecap="round" />
+                        <circle cx="188" cy="100" r="10" fill="#facc15" filter="drop-shadow(0 0 8px #ef4444)" />
+                    </svg>
+
+                    <svg class="fireball-svg fb-3" viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="fireGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="30%" stop-color="#f97316" />
+                                <stop offset="100%" stop-color="#dc2626" stop-opacity="0" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 100,12 A 88,88 0 0,1 188,100" fill="none" stroke="url(#fireGrad3)" stroke-width="14" stroke-linecap="round" />
+                        <circle cx="188" cy="100" r="10" fill="#ffffff" filter="drop-shadow(0 0 8px #facc15)" />
+                    </svg>
                 </div>
                 
                 <img id="userLogo" src="https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/9d83ffeb-380c-41c1-95c2-2405263f611e.jpg" alt="Shinji Hirako Store" class="avatar" onerror="handleLogoError()">
@@ -1155,7 +1181,7 @@
                 Melayani dengan cepat, profesional, dan anti drama!
             </p>
 
-            <!-- Status Online Hijau Terang Besar-Kecil -->
+            <!-- Status Online Hijau Terang -->
             <div class="status-badge">
                 <span id="status-dot" class="status-dot"></span>
                 <span id="status-text">Memeriksa...</span>
@@ -1228,7 +1254,6 @@
                 </div>
 
                 <div class="services-wrapper">
-                    <!-- Note Jasa: Tidak berputar -->
                     <div class="note-badge">
                         <i class="fa-solid fa-tag"></i> Note : Harga chat aja pasti murah kok
                     </div>
@@ -1297,7 +1322,7 @@
                 </div>
             </div>
 
-            <!-- Traktir Shinji Button (Animasi Tuang Kopi Realistik) -->
+            <!-- Traktir Shinji Button -->
             <div class="traktir-card" onclick="openLightbox('https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/83169f09-6767-4c33-b17f-1913b3d455f6.jpg')">
                 <div class="traktir-content">
                     <div class="traktir-icon">
@@ -1363,7 +1388,7 @@
                 </div>
             </div>
 
-            <!-- FAQ Accordion Lengkap Animasi Seluruh Ikon -->
+            <!-- FAQ Accordion -->
             <div>
                 <div class="section-title">
                     <i class="fa-solid fa-circle-question"></i>
@@ -1567,11 +1592,8 @@
                     </div>
                 </div>
 
-                <!-- Tips Kick Device KGM dengan Ikon fa-mobile-xmark Lengkap -->
                 <div class="tip-card" data-tags="mlbb">
-                    <div class="tip-icon-box">
-                        <i class="fa-solid fa-mobile-xmark"></i>
-                    </div>
+                    <div class="tip-icon-box"><i class="fa-solid fa-mobile-xmark"></i></div>
                     <div class="tip-body">
                         <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #mlbb</span></div>
                         <h3 class="tip-title">Cara kick device tapi kgm</h3>
@@ -1671,7 +1693,7 @@
             document.getElementById('avatarText').style.display = 'flex';
         }
 
-        // 1. Status Online/Offline Automatic (07:00 - 24:00 WITA)
+        // 1. Status Online Automatic (WITA)
         function checkWITAStatus() {
             const now = new Date();
             const utcHours = now.getUTCHours();
@@ -1691,7 +1713,7 @@
         checkWITAStatus();
         setInterval(checkWITAStatus, 30000);
 
-        // 2. Navigation Dropdown & Tab Switcher
+        // 2. Navigation Dropdown
         function toggleMenu() {
             document.getElementById('dropdownMenu').classList.toggle('show');
         }
@@ -1726,7 +1748,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 3. FAQ Accordion Toggle Smooth
+        // 3. FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(item => {
             item.addEventListener('click', () => {
                 const parent = item.parentElement;
@@ -1737,7 +1759,7 @@
             });
         });
 
-        // 4. Filtering Tips dengan Hashtag
+        // 4. Filtering Tips
         function filterTips(tag, btnElement) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
@@ -1773,7 +1795,7 @@
             document.body.style.overflow = 'auto';
         }
 
-        // 5. Pemutar Musik "24/7 Song" - Auto Play Langsung dari Detik ke-18
+        // 5. Pemutar Musik "24/7 Song"
         const bgMusic = document.getElementById('bgMusic');
         const playIcon = document.getElementById('playIcon');
         const musicBar = document.getElementById('musicBar');
