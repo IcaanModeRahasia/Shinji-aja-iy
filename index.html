@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shinji Hirako | Store & Jasa Terpercaya</title>
+    <title>Shinji Hirako | Store & Jasa JB Terpercaya</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,21 +13,21 @@
     
     <style>
         :root {
-            --bg-main: #0b0f19;
-            --bg-card: rgba(23, 32, 54, 0.7);
-            --bg-card-hover: rgba(30, 41, 69, 0.85);
-            --primary: #ef4444;
-            --primary-hover: #dc2626;
-            --primary-light: rgba(239, 68, 68, 0.15);
-            --primary-glow: rgba(239, 68, 68, 0.35);
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --primary: #dc2626;
+            --primary-hover: #b91c1c;
+            --primary-light: #fef2f2;
+            --primary-glow: rgba(220, 38, 38, 0.25);
             --accent-green: #10b981;
             --accent-red: #ef4444;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --border-glow: rgba(239, 68, 68, 0.3);
-            --radius-lg: 24px;
-            --radius-md: 16px;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #f1f5f9;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --shadow-subtle: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 35px -5px rgba(220, 38, 38, 0.15);
             --transition-smooth: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
@@ -41,14 +41,17 @@
 
         body {
             background-color: var(--bg-main);
-            color: var(--text-main);
+            color: var(--text-dark);
             min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: 140px; /* Memberi ruang aman untuk music bar */
-            position: relative;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(220, 38, 38, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(220, 38, 38, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 100%);
+            background-attachment: fixed;
+            padding-bottom: 110px;
         }
 
-        /* Ambient Background Orbs */
         .bg-pattern {
             position: fixed;
             top: 0;
@@ -57,82 +60,73 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
-            overflow: hidden;
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.25;
-            animation: orbFloat 10s infinite alternate ease-in-out;
-        }
-
-        .orb-1 {
-            top: -100px;
-            left: -100px;
-            width: 350px;
-            height: 350px;
-            background: #ef4444;
-        }
-
-        .orb-2 {
-            bottom: -100px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: #8b5cf6;
-            animation-delay: -5s;
-        }
-
-        @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, 60px) scale(1.15); }
+            opacity: 0.6;
+            background-image: radial-gradient(rgba(220, 38, 38, 0.12) 1px, transparent 1px);
+            background-size: 24px 24px;
         }
 
         .container {
-            max-width: 680px;
+            max-width: 720px;
             margin: 0 auto;
-            padding: 32px 20px;
+            padding: 40px 20px 60px 20px;
             position: relative;
             z-index: 1;
             display: flex;
             flex-direction: column;
-            gap: 32px; /* Jarak lega antar elemen */
+            gap: 28px; /* Memberikan jarak antar bagian agar tidak berdempetan */
         }
 
-        /* --- PROFILE CARD SECTION --- */
+        /* Profile Section */
         .profile-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             border-radius: var(--radius-lg);
-            padding: 36px 24px;
+            padding: 36px 24px 28px 24px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: var(--shadow-subtle);
             position: relative;
-            animation: scaleEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes scaleEntrance {
+        @keyframes scaleIn {
             from { opacity: 0; transform: scale(0.92) translateY(20px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* Menu Garis 2 Navigasi */
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #dc2626, #ef4444, #f87171, #dc2626);
+            background-size: 200% 100%;
+            animation: gradientMove 4s linear infinite;
+            border-top-left-radius: var(--radius-lg);
+            border-top-right-radius: var(--radius-lg);
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        /* Menu Garis 2 Navigasi Kanan Atas */
         .menu-wrapper {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 18px;
+            right: 18px;
             z-index: 20;
         }
 
         .menu-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            width: 42px;
-            height: 42px;
+            background: rgba(220, 38, 38, 0.08);
+            border: 1px solid rgba(220, 38, 38, 0.15);
+            width: 40px;
+            height: 40px;
             border-radius: 12px;
             cursor: pointer;
             display: flex;
@@ -143,39 +137,42 @@
             transition: var(--transition-smooth);
         }
 
-        .menu-btn:hover {
+        .menu-btn:hover, .menu-btn:active {
             background: var(--primary);
             border-color: var(--primary);
             transform: scale(1.08) rotate(90deg);
         }
 
         .menu-btn span {
-            width: 20px;
+            width: 18px;
             height: 2.5px;
-            background-color: var(--text-main);
+            background-color: var(--primary);
             border-radius: 4px;
             transition: var(--transition-smooth);
+        }
+
+        .menu-btn:hover span, .menu-btn:active span {
+            background-color: #ffffff;
         }
 
         .dropdown-menu {
             display: none;
             position: absolute;
             right: 0;
-            top: 52px;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(16px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            border-radius: 16px;
+            top: 48px;
+            background: #ffffff;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+            border-radius: 14px;
             overflow: hidden;
-            width: 150px;
-            border: 1px solid var(--border-color);
+            width: 140px;
+            border: 1px solid #f1f5f9;
             z-index: 30;
-            animation: menuPopup 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation: fadeIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        @keyframes menuPopup {
-            from { opacity: 0; transform: scale(0.8) translateY(-10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .dropdown-menu.show { display: block; }
@@ -184,9 +181,9 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 12px 18px;
+            padding: 12px 16px;
             text-decoration: none;
-            color: var(--text-main);
+            color: var(--text-dark);
             font-size: 0.88rem;
             font-weight: 600;
             transition: var(--transition-smooth);
@@ -195,15 +192,15 @@
         .dropdown-menu a:hover, .dropdown-menu a.active {
             background-color: var(--primary-light);
             color: var(--primary);
-            padding-left: 22px;
+            padding-left: 20px;
         }
 
-        /* Avatar Container HD */
+        /* Avatar Container & Centang Biru Premium Mengkilat */
         .avatar-wrapper {
             position: relative;
-            width: 115px;
-            height: 115px;
-            margin: 0 auto 20px;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 18px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -214,21 +211,28 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--bg-main);
+            box-shadow: 0 10px 25px var(--primary-glow);
+            border: 4px solid #ffffff;
             position: relative;
             z-index: 2;
-            box-shadow: 0 0 25px var(--primary-glow);
+            background: #ffffff;
+            transition: var(--transition-smooth);
+        }
+
+        .avatar-wrapper:hover .avatar {
+            transform: scale(1.05);
         }
 
         .avatar-ring {
             position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
+            top: -7px;
+            left: -7px;
+            right: -7px;
+            bottom: -7px;
             border-radius: 50%;
-            background: conic-gradient(from 0deg, var(--primary), #8b5cf6, #3b82f6, var(--primary));
-            animation: spinRing 6s linear infinite;
+            border: 3px dashed #dc2626;
+            animation: spinRing 12s linear infinite;
+            opacity: 0.8;
             z-index: 1;
         }
 
@@ -242,24 +246,46 @@
             right: 2px;
             background: linear-gradient(135deg, #0072ff, #00c6ff);
             color: white;
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
-            border: 2px solid var(--bg-main);
+            font-size: 0.88rem;
+            border: 2px solid white;
             z-index: 3;
-            box-shadow: 0 4px 12px rgba(0, 114, 255, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 114, 255, 0.4);
+            overflow: hidden;
+        }
+
+        .verified-badge::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                60deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.8) 50%,
+                transparent 70%
+            );
+            animation: badgeShimmer 2.5s infinite;
+        }
+
+        @keyframes badgeShimmer {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
         }
 
         .profile-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 2.1rem;
+            font-size: 2rem;
             font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 8px;
+            color: var(--text-dark);
+            margin-bottom: 6px;
             letter-spacing: -0.5px;
         }
 
@@ -267,48 +293,48 @@
             font-size: 0.95rem;
             color: var(--text-muted);
             line-height: 1.6;
-            margin: 0 auto 20px;
+            max-width: 520px;
+            margin: 0 auto 16px;
             font-weight: 500;
         }
 
-        /* STATUS BADGE OTOMATIS HD (07.00 - 24.00 WITA) */
+        /* Status Badge Online / Offline Automatic (1 Indikator Tunggal) */
         .status-badge {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: rgba(15, 23, 42, 0.8);
+            gap: 8px;
+            background: #ffffff;
             border: 1px solid var(--border-color);
-            padding: 8px 20px;
+            padding: 6px 16px;
             border-radius: 50px;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-subtle);
             margin-bottom: 16px;
         }
 
         .status-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             display: inline-block;
         }
 
         .status-dot.online {
             background-color: var(--accent-green);
-            box-shadow: 0 0 12px var(--accent-green);
-            animation: pulseOnline 1.8s infinite;
+            box-shadow: 0 0 10px var(--accent-green);
+            animation: pulseOnline 1.6s infinite;
         }
 
         .status-dot.offline {
             background-color: var(--accent-red);
-            box-shadow: 0 0 12px var(--accent-red);
+            box-shadow: 0 0 10px var(--accent-red);
             animation: pulseOffline 2s infinite;
         }
 
         @keyframes pulseOnline {
-            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8); }
-            70% { transform: scale(1.15); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
             100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
@@ -321,8 +347,7 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
         }
 
         .badge-pill {
@@ -332,7 +357,7 @@
             font-weight: 700;
             padding: 6px 14px;
             border-radius: 50px;
-            border: 1px solid rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(220, 38, 38, 0.15);
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -340,18 +365,18 @@
         }
 
         .badge-pill:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             background: var(--primary);
             color: white;
         }
 
-        /* --- JUDUL SEKSI & ANIMASI ICON --- */
+        /* Section Titles */
         .section-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 16px;
+            color: var(--text-dark);
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -359,20 +384,19 @@
 
         .section-title i {
             color: var(--primary);
-            font-size: 1.15rem;
-            animation: floatIcon 3s ease-in-out infinite alternate;
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
         }
 
-        @keyframes floatIcon {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-5px); }
+        .section-title:hover i {
+            transform: rotate(15deg) scale(1.15);
         }
 
-        /* --- LINKS GRID --- */
+        /* Links Grid */
         .links-grid {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .btn-link {
@@ -380,13 +404,14 @@
             align-items: center;
             justify-content: space-between;
             background: var(--bg-card);
-            border: 1px solid var(--border-color);
+            border: 1.5px solid var(--border-color);
             padding: 18px 22px;
             border-radius: var(--radius-md);
             text-decoration: none;
-            color: var(--text-main);
+            color: var(--text-dark);
             font-weight: 700;
             font-size: 1rem;
+            box-shadow: var(--shadow-subtle);
             transition: var(--transition-smooth);
         }
 
@@ -408,10 +433,10 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
             color: white;
             border: none;
-            box-shadow: 0 10px 25px var(--primary-glow);
+            box-shadow: 0 8px 20px var(--primary-glow);
         }
 
         .btn-primary .btn-icon {
@@ -425,96 +450,117 @@
             color: var(--primary);
         }
 
+        .btn-link .arrow-icon {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+        }
+
         .btn-link:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 12px 25px rgba(239, 68, 68, 0.2);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
         }
 
         .btn-link:hover .btn-icon {
-            transform: scale(1.15) rotate(-5deg);
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(220, 38, 38, 0.3);
         }
 
         .btn-link:hover .arrow-icon {
-            transform: translateX(6px);
+            transform: translateX(5px);
             color: var(--primary);
         }
 
-        /* --- HORIZONTAL SLIDER JASA --- */
+        /* Jasa Shinji Horizontal Slider */
         .services-wrapper {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
-            padding: 24px 20px;
+            padding: 22px 18px;
             border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
         }
 
         .note-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(249, 115, 22, 0.15);
-            color: #fb923c;
-            border: 1px dashed rgba(249, 115, 22, 0.4);
-            padding: 8px 16px;
+            background: #fff7ed;
+            color: #c2410c;
+            border: 1px dashed #fdba74;
+            padding: 8px 14px;
             border-radius: 30px;
             font-size: 0.83rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .horizontal-slider {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
 
         .horizontal-slider::-webkit-scrollbar { height: 6px; }
-        .horizontal-slider::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
-        .horizontal-slider::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+        .horizontal-slider::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+        .horizontal-slider::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .horizontal-slider::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
         .service-card {
-            flex: 0 0 200px;
+            flex: 0 0 210px;
             scroll-snap-align: start;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid var(--border-color);
+            background: #fafafa;
+            border: 1.5px solid #f1f5f9;
             border-radius: var(--radius-md);
-            padding: 18px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 16px;
+            gap: 14px;
             transition: var(--transition-smooth);
         }
 
         .service-card:hover {
             border-color: var(--primary);
-            transform: translateY(-6px);
-            box-shadow: 0 12px 25px rgba(239, 68, 68, 0.25);
+            background: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.1);
         }
 
         .service-info {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            text-align: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .service-icon {
-            font-size: 1.8rem;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--primary-light);
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
             transition: var(--transition-smooth);
         }
 
         .service-card:hover .service-icon {
-            transform: scale(1.25) rotate(10deg);
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
         }
 
         .service-name {
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
+            color: var(--text-dark);
             line-height: 1.3;
         }
 
@@ -522,51 +568,98 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #25d366, #128c7e);
+            gap: 6px;
+            background: var(--primary);
             color: white;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.85rem;
-            padding: 10px 14px;
-            border-radius: 12px;
+            font-size: 0.82rem;
+            padding: 9px 12px;
+            border-radius: 10px;
             transition: var(--transition-smooth);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
         }
 
         .btn-order:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+            background: var(--primary-hover);
+            box-shadow: 0 4px 12px var(--primary-glow);
         }
 
-        /* --- TESTIMONI SECTION (STATISTIK + FULL LAYAR TANPA ZOOM) --- */
-        .testi-section {
+        /* Traktir Shinji Button */
+        .traktir-card {
+            background: linear-gradient(135deg, #fff7ed, #ffedd5);
+            border: 1.5px dashed #f97316;
+            border-radius: var(--radius-md);
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .traktir-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.18);
+        }
+
+        .traktir-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .traktir-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #f97316;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .traktir-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #9a3412;
+        }
+
+        .traktir-sub {
+            font-size: 0.78rem;
+            color: #c2410c;
+            font-weight: 500;
+        }
+
+        /* Testimoni Kami Section (Statistik + Gambar Pas Layar Tanpa Zoom) */
+        .testi-card-wrapper {
             background: var(--bg-card);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 24px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            padding: 22px;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid var(--border-color);
         }
 
         .testi-header-stats {
-            background: rgba(11, 15, 25, 0.8);
+            background: #f8fafc;
             border-radius: var(--radius-md);
-            padding: 16px 20px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border-color);
+            padding: 14px 18px;
+            margin-bottom: 18px;
+            border: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .testi-stat-item {
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             font-weight: 700;
             display: flex;
             align-items: center;
             gap: 10px;
-            color: var(--text-main);
+            color: var(--text-dark);
         }
 
         .testi-stat-item i {
@@ -575,11 +668,11 @@
         }
 
         .testi-stat-item span {
-            color: #38bdf8;
+            color: var(--primary);
             font-weight: 800;
         }
 
-        /* Gambar Testimoni (Full Layar & Gabisa Dipencet) */
+        /* Gambar Testimoni Pas Layar & Tidak Bisa Dipencet */
         .testi-container {
             display: flex;
             flex-direction: column;
@@ -590,12 +683,11 @@
             width: 100%;
             border-radius: var(--radius-md);
             overflow: hidden;
-            border: 1px solid var(--border-color);
-            /* Menonaktifkan klik/zoom/download popup */
-            pointer-events: none;
+            border: 1px solid #e2e8f0;
+            pointer-events: none; /* Menonaktifkan klik/zoom */
             user-select: none;
             -webkit-user-drag: none;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
         }
 
         .testi-img-wrapper img {
@@ -605,27 +697,28 @@
             object-fit: cover;
         }
 
-        /* --- FAQ ACCORDION SECTION (INTERAKTIF & ANIMATED) --- */
-        .faq-container {
+        /* FAQ Accordion Section */
+        .faq-section {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
         }
 
         .faq-card {
             background: var(--bg-card);
-            border: 1px solid var(--border-color);
+            border: 1.5px solid var(--border-color);
             border-radius: var(--radius-md);
             overflow: hidden;
             transition: var(--transition-smooth);
+            box-shadow: var(--shadow-subtle);
         }
 
         .faq-card:hover {
-            border-color: rgba(239, 68, 68, 0.4);
+            border-color: rgba(220, 38, 38, 0.3);
         }
 
         .faq-question {
-            padding: 18px 22px;
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -633,7 +726,8 @@
             font-weight: 700;
             font-size: 0.95rem;
             user-select: none;
-            gap: 12px;
+            gap: 10px;
+            color: var(--text-dark);
         }
 
         .faq-question span {
@@ -658,17 +752,16 @@
             overflow: hidden;
             opacity: 0;
             transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.3s ease;
-            background: rgba(11, 15, 25, 0.6);
+            background: #fafafa;
             font-size: 0.88rem;
-            color: var(--text-muted);
-            padding: 0 22px;
+            color: #475569;
+            padding: 0 20px;
             line-height: 1.6;
         }
 
-        /* State FAQ Aktif */
         .faq-card.active {
             border-color: var(--primary);
-            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.2);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.12);
         }
 
         .faq-card.active .faq-icon {
@@ -677,27 +770,27 @@
         }
 
         .faq-card.active .faq-answer {
-            max-height: 250px;
+            max-height: 200px;
             opacity: 1;
-            padding: 16px 22px 20px;
+            padding: 14px 20px 18px;
         }
 
-        /* --- TIPS CARDS SECTION --- */
+        /* Hashtag Filter Buttons in Tips Tab */
         .filter-container {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             overflow-x: auto;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
         }
 
         .filter-container::-webkit-scrollbar { display: none; }
 
         .filter-btn {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
             color: var(--text-muted);
-            padding: 8px 18px;
+            padding: 8px 16px;
             border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 700;
@@ -710,9 +803,10 @@
             background: var(--primary);
             color: white;
             border-color: var(--primary);
-            box-shadow: 0 4px 15px var(--primary-glow);
+            box-shadow: 0 4px 12px var(--primary-glow);
         }
 
+        /* Tips Cards dengan Logo/Ikon */
         .tips-container {
             display: flex;
             flex-direction: column;
@@ -724,19 +818,19 @@
             border: 1px solid var(--border-color);
             border-left: 5px solid var(--primary);
             border-radius: var(--radius-md);
-            padding: 20px;
+            padding: 18px;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition-smooth);
             display: flex;
             gap: 16px;
             align-items: flex-start;
-            transition: var(--transition-smooth);
         }
 
         .tip-card.hidden { display: none !important; }
 
         .tip-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
         }
 
         .tip-icon-box {
@@ -750,69 +844,193 @@
             justify-content: center;
             font-size: 1.25rem;
             flex-shrink: 0;
+            border: 1px solid rgba(220, 38, 38, 0.15);
+        }
+
+        .tip-body { flex: 1; }
+
+        .tip-tags {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .tip-tag-pill {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 2px 8px;
+            border-radius: 6px;
         }
 
         .tip-title {
             font-family: 'Outfit', sans-serif;
             font-size: 1.05rem;
             font-weight: 700;
+            color: var(--text-dark);
             margin-bottom: 6px;
         }
 
         .tip-content {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            font-size: 0.92rem;
+            color: #475569;
             line-height: 1.6;
+            font-weight: 500;
         }
 
-        /* --- FLOATING MUSIC BAR (FULL WIDTH FIXED DISPLAY) --- */
+        .tips-note-bottom {
+            text-align: center;
+            background: var(--primary-light);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            color: var(--primary);
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 24px;
+        }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+        }
+
+        .lightbox-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            max-width: 95%;
+            max-height: 85vh;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            transform: scale(0.9);
+            transition: var(--transition-smooth);
+        }
+
+        .lightbox-modal.active .lightbox-content { transform: scale(1); }
+
+        .lightbox-content img {
+            width: 100%;
+            height: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .lightbox-close:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        /* Floating Balloon Chat Shinji */
+        .floating-wa-balloon {
+            position: fixed;
+            bottom: 82px;
+            right: 20px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+            z-index: 150;
+            animation: floatUpDown 3s ease-in-out infinite;
+            transition: var(--transition-smooth);
+        }
+
+        .floating-wa-balloon:hover {
+            transform: scale(1.05) translateY(-4px);
+        }
+
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Floating Audio Player Bar (Full Tampilan Utuh) */
         .music-bar-container {
             position: fixed;
-            bottom: 20px;
+            bottom: 16px;
             left: 0;
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 0 20px;
-            z-index: 1000;
+            padding: 0 16px;
+            z-index: 100;
         }
 
         .music-bar {
             width: 100%;
-            max-width: 520px;
-            background: rgba(15, 23, 42, 0.92);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow);
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(220, 38, 38, 0.2);
             border-radius: 50px;
-            padding: 10px 20px;
+            padding: 10px 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            transition: var(--transition-smooth);
+            box-shadow: 0 15px 35px rgba(220, 38, 38, 0.15);
         }
 
         .music-info {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             overflow: hidden;
         }
 
         .music-disc {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: linear-gradient(135deg, #1e293b, #0f172a);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 1rem;
+            font-size: 0.9rem;
             flex-shrink: 0;
             border: 2px solid var(--primary-light);
-            animation: spinDisc 5s linear infinite;
+            animation: spinDisc 6s linear infinite;
             animation-play-state: paused;
         }
 
@@ -827,23 +1045,23 @@
         }
 
         .music-title {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            color: var(--text-main);
+            color: var(--text-dark);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
         .music-sub {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             white-space: nowrap;
         }
 
         .btn-play {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: var(--primary);
             color: white;
@@ -852,45 +1070,15 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 1.05rem;
-            box-shadow: 0 4px 15px var(--primary-glow);
+            font-size: 1rem;
+            box-shadow: 0 4px 12px var(--primary-glow);
             transition: var(--transition-smooth);
             flex-shrink: 0;
         }
 
         .btn-play:hover {
-            transform: scale(1.1);
+            transform: scale(1.08);
             background: var(--primary-hover);
-        }
-
-        /* Floating Balloon Chat WA */
-        .floating-wa-balloon {
-            position: fixed;
-            bottom: 85px;
-            right: 20px;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 0.88rem;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            z-index: 990;
-            animation: floatUpDown 3s ease-in-out infinite;
-            transition: var(--transition-smooth);
-        }
-
-        .floating-wa-balloon:hover {
-            transform: scale(1.08) translateY(-4px);
-        }
-
-        @keyframes floatUpDown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
         }
 
         .footer {
@@ -901,22 +1089,20 @@
             font-weight: 500;
         }
 
-        .footer span { color: var(--primary); font-weight: 700; }
+        .footer span {
+            color: var(--primary);
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
 
-    <!-- BACKGROUND AMBIENT GLOW -->
-    <div class="bg-pattern">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-    </div>
+    <div class="bg-pattern"></div>
 
     <div class="container">
-        
-        <!-- PROFILE SECTION -->
+        <!-- Profile Header -->
         <div class="profile-card">
-            <!-- Navigasi Kanan Atas -->
+            <!-- Menu Garis 2 Navigasi -->
             <div class="menu-wrapper">
                 <button class="menu-btn" onclick="toggleMenu()" id="menuBtn" aria-label="Menu Navigasi">
                     <span></span>
@@ -927,15 +1113,16 @@
                         <i class="fa-solid fa-house"></i> Home
                     </a>
                     <a href="javascript:void(0)" onclick="switchTab('tips')" id="navTips">
-                        <i class="fa-solid fa-lightbulb"></i> Tips JB
+                        <i class="fa-solid fa-lightbulb"></i> Tips Jb
                     </a>
                 </div>
             </div>
 
-            <!-- Avatar Profile -->
             <div class="avatar-wrapper">
                 <div class="avatar-ring"></div>
-                <img id="userLogo" src="https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/9d83ffeb-380c-41c1-95c2-2405263f611e.jpg" alt="Shinji Hirako Store" class="avatar">
+                <img id="userLogo" src="https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/9d83ffeb-380c-41c1-95c2-2405263f611e.jpg" alt="Shinji Hirako Store" class="avatar" onerror="handleLogoError()">
+                <div id="avatarText" class="avatar avatar-fallback" style="display: none;">SH</div>
+                
                 <div class="verified-badge" title="Terverifikasi Premium">
                     <i class="fa-solid fa-check"></i>
                 </div>
@@ -943,10 +1130,11 @@
             
             <h1 class="profile-title">Shinji Hirako</h1>
             <p class="profile-tagline">
-                Reseller MLBB & Free Fire Murah, Terpercaya & Amanah Sejak <strong>2025</strong>. Melayani dengan cepat dan profesional!
+                Reseller MLBB & Free Fire Murah, Terpercaya & Amanah Sejak <strong>2025</strong>. 
+                Melayani dengan cepat, profesional, dan anti drama!
             </p>
 
-            <!-- STATUS ONLINE / OFFLINE AUTOMATIC (07:00 - 24:00 WITA) -->
+            <!-- Status Online/Offline Otomatis WITA (Indikator Tunggal) -->
             <div class="status-badge">
                 <span id="status-dot" class="status-dot"></span>
                 <span id="status-text">Memeriksa...</span>
@@ -959,19 +1147,21 @@
             </div>
         </div>
 
-        <!-- TAB HOME -->
-        <div id="tabHome" style="display: flex; flex-direction: column; gap: 32px;">
-            
-            <!-- TAUTAN RESMI -->
+        <!-- TAB CONTENT: HOME -->
+        <div id="tabHome" style="display: flex; flex-direction: column; gap: 28px;">
+            <!-- Tautan Resmi -->
             <div>
                 <div class="section-title">
-                    <i class="fa-solid fa-compass"></i> Tautan Resmi
+                    <i class="fa-solid fa-compass"></i>
+                    <span>Tautan Resmi</span>
                 </div>
 
                 <div class="links-grid">
                     <a href="whatsapp://channel/0029Vb7IDQlDjiOUlVXpYs14" id="waChannelLink" class="btn-link btn-primary">
                         <div class="btn-content">
-                            <div class="btn-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div class="btn-icon">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
                             <div>
                                 <div>Saluran Stok FF & MLBB</div>
                                 <div style="font-size: 0.78rem; opacity: 0.9; font-weight: 500;">Update stok ready setiap hari</div>
@@ -980,12 +1170,27 @@
                         <i class="fa-solid fa-chevron-right arrow-icon"></i>
                     </a>
 
-                    <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDYxNDY1MTYwMzM3NTQ2?story_media_id=3691155703105321445_75869492995&stkn=eHhqcnpkZjA2bWh2" target="_blank" class="btn-link btn-secondary">
+                    <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDYxNDY1MTYwMzM3NTQ2?story_media_id=3691155703105321445_75869492995&stkn=eHhqcnpkZjA2bWh2" target="_blank" rel="noopener" class="btn-link btn-secondary">
                         <div class="btn-content">
-                            <div class="btn-icon"><i class="fa-brands fa-instagram"></i></div>
+                            <div class="btn-icon">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
                             <div>
-                                <div>Testimoni Instagram</div>
-                                <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 500;">Bukti transaksi sukses</div>
+                                <div>Testimoni Pelanggan</div>
+                                <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 500;">Bukti transaksi sukses & aman</div>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
+                    </a>
+
+                    <a href="https://linkbio.co/shinjihirako" target="_blank" rel="noopener" class="btn-link btn-secondary">
+                        <div class="btn-content">
+                            <div class="btn-icon">
+                                <i class="fa-solid fa-link"></i>
+                            </div>
+                            <div>
+                                <div>Info Lengkap & Kontak</div>
+                                <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 500;">LinkBio resmi Shinji Hirako</div>
                             </div>
                         </div>
                         <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
@@ -993,10 +1198,11 @@
                 </div>
             </div>
 
-            <!-- LAYANAN JASA -->
+            <!-- Section Jasa Shinji -->
             <div>
                 <div class="section-title">
-                    <i class="fa-solid fa-briefcase"></i> Jasa Shinji
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Jasa Shinji</span>
                 </div>
 
                 <div class="services-wrapper">
@@ -1008,9 +1214,9 @@
                         <div class="service-card">
                             <div class="service-info">
                                 <div class="service-icon"><i class="fa-solid fa-code"></i></div>
-                                <div class="service-name">Buat Web Portofolio</div>
+                                <div class="service-name">Buat web seperti ini</div>
                             </div>
-                            <a href="https://wa.me/6283199265399?text=mau%20order%20web%20portofolio%20bang" target="_blank" class="btn-order">
+                            <a href="https://wa.me/6283199265399?text=mau%20order%20Buat%20web%20seperti%20ini%20dong" target="_blank" class="btn-order">
                                 <i class="fa-brands fa-whatsapp"></i> Order
                             </a>
                         </div>
@@ -1020,7 +1226,7 @@
                                 <div class="service-icon"><i class="fa-solid fa-user-gear"></i></div>
                                 <div class="service-name">Cein Moonton</div>
                             </div>
-                            <a href="https://wa.me/6283199265399?text=mau%20order%20jasa%20cein%20moonton%20bang" target="_blank" class="btn-order">
+                            <a href="https://wa.me/6283199265399?text=mau%20order%20Cein%20Moonton%20dong" target="_blank" class="btn-order">
                                 <i class="fa-brands fa-whatsapp"></i> Order
                             </a>
                         </div>
@@ -1028,9 +1234,9 @@
                         <div class="service-card">
                             <div class="service-info">
                                 <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                                <div class="service-name">Amanin Akun</div>
+                                <div class="service-name">Amanin akun</div>
                             </div>
-                            <a href="https://wa.me/6283199265399?text=mau%20order%20jasa%20amanin%20akun%20bang" target="_blank" class="btn-order">
+                            <a href="https://wa.me/6283199265399?text=mau%20order%20Amanin%20akun%20dong" target="_blank" class="btn-order">
                                 <i class="fa-brands fa-whatsapp"></i> Order
                             </a>
                         </div>
@@ -1040,7 +1246,7 @@
                                 <div class="service-icon"><i class="fa-solid fa-link"></i></div>
                                 <div class="service-name">Rebind</div>
                             </div>
-                            <a href="https://wa.me/6283199265399?text=mau%20order%20jasa%20rebind%20bang" target="_blank" class="btn-order">
+                            <a href="https://wa.me/6283199265399?text=mau%20order%20Rebind%20dong" target="_blank" class="btn-order">
                                 <i class="fa-brands fa-whatsapp"></i> Order
                             </a>
                         </div>
@@ -1050,7 +1256,7 @@
                                 <div class="service-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
                                 <div class="service-name">Monsepin Monkos</div>
                             </div>
-                            <a href="https://wa.me/6283199265399?text=mau%20order%20jasa%20monsepin%20monkos%20bang" target="_blank" class="btn-order">
+                            <a href="https://wa.me/6283199265399?text=mau%20order%20Monsepin%20Monkos%20dong" target="_blank" class="btn-order">
                                 <i class="fa-brands fa-whatsapp"></i> Order
                             </a>
                         </div>
@@ -1060,7 +1266,7 @@
                                 <div class="service-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
                                 <div class="service-name">Out Dev Kgm</div>
                             </div>
-                            <a href="https://wa.me/6283199265399?text=mau%20order%20jasa%20out%20dev%20kgm%20bang" target="_blank" class="btn-order">
+                            <a href="https://wa.me/6283199265399?text=mau%20order%20Out%20Dev%20Kgm%20dong" target="_blank" class="btn-order">
                                 <i class="fa-brands fa-whatsapp"></i> Order
                             </a>
                         </div>
@@ -1068,47 +1274,63 @@
                 </div>
             </div>
 
-            <!-- TESTIMONI SECTION -->
-            <div class="testi-section">
+            <!-- Traktir Shinji Button -->
+            <div class="traktir-card" onclick="openLightbox('https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/83169f09-6767-4c33-b17f-1913b3d455f6.jpg')">
+                <div class="traktir-content">
+                    <div class="traktir-icon"><i class="fa-solid fa-mug-hot"></i></div>
+                    <div>
+                        <div class="traktir-title">Traktir shinji☕</div>
+                        <div class="traktir-sub">Klik di sini untuk lihat QRIS / Donasi</div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-qrcode" style="font-size: 1.4rem; color: #f97316;"></i>
+            </div>
+
+            <!-- Testimoni Kami Section -->
+            <div>
                 <div class="section-title">
-                    <i class="fa-solid fa-comments"></i> Testimoni Pelanggan
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Beberapa Testimoni Kami :</span>
                 </div>
 
-                <!-- Header Statistik Testimoni -->
-                <div class="testi-header-stats">
-                    <div class="testi-stat-item">
-                        <i class="fa-solid fa-chart-line"></i> Testi : <span>2.200+</span>
+                <div class="testi-card-wrapper">
+                    <!-- Teks Statistik Testimoni -->
+                    <div class="testi-header-stats">
+                        <div class="testi-stat-item">
+                            <i class="fa-solid fa-chart-line"></i> Testi : <span>2.200+</span>
+                        </div>
+                        <div class="testi-stat-item">
+                            <i class="fa-solid fa-trophy"></i> Big Testi : <span>1.800.000</span>
+                        </div>
                     </div>
-                    <div class="testi-stat-item">
-                        <i class="fa-solid fa-trophy"></i> Big Testi : <span>1.800.000</span>
-                    </div>
-                </div>
 
-                <!-- Gambar Testimoni Full Layar (Gabisa Dipencet/Zoom) -->
-                <div class="testi-container">
-                    <div class="testi-img-wrapper">
-                        <img src="https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/66eaa355-7d9d-4a4b-a320-ac6dce6c5e6d.jpg" alt="Bukti Testi 1">
-                    </div>
-                    <div class="testi-img-wrapper">
-                        <img src="https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/ea92ebec-b0d3-41a9-b934-c008cce50fd4.jpg" alt="Bukti Testi 2">
+                    <!-- Tampilan Gambar Full Layar (Tidak Bisa Dipencet/Zoom) -->
+                    <div class="testi-container">
+                        <div class="testi-img-wrapper">
+                            <img src="https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/66eaa355-7d9d-4a4b-a320-ac6dce6c5e6d.jpg" alt="Testimoni 1">
+                        </div>
+                        <div class="testi-img-wrapper">
+                            <img src="https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/ea92ebec-b0d3-41a9-b934-c008cce50fd4.jpg" alt="Testimoni 2">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- FAQ SECTION (ACCORDION MODEREN) -->
+            <!-- FAQ Section Accordion -->
             <div>
                 <div class="section-title">
-                    <i class="fa-solid fa-circle-question"></i> Pertanyaan Umum (FAQ)
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span>Pertanyaan Umum (FAQ)</span>
                 </div>
 
-                <div class="faq-container">
+                <div class="faq-section">
                     <div class="faq-card">
                         <div class="faq-question">
                             <span><i class="fa-solid fa-shield-check"></i> Apakah transaksi di sini aman & terpercaya?</span>
                             <i class="fa-solid fa-chevron-down faq-icon"></i>
                         </div>
                         <div class="faq-answer">
-                            Sangat aman! Kami telah melayani ribuan transaksi sukses sejak 2025 dengan garansi penuh dan transparansi total.
+                            Sangat aman! Kami berpengalaman melayani ribuan transaksi sukses sejak 2025 dengan sistem transaksi aman dan bergaransi.
                         </div>
                     </div>
 
@@ -1118,7 +1340,7 @@
                             <i class="fa-solid fa-chevron-down faq-icon"></i>
                         </div>
                         <div class="faq-answer">
-                            Proses pengerjaan dilakukan secepat mungkin, rata-rata 5 hingga 20 menit tergantung antrean transaksi.
+                            Proses pengerjaan kilat, umumnya memakan waktu 5 hingga 20 menit tergantung antrean transaksi yang masuk.
                         </div>
                     </div>
 
@@ -1133,15 +1355,16 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <!-- TAB TIPS JB -->
+        <!-- TAB CONTENT: TIPS JB (20 TIPS LENGKAP) -->
         <div id="tabTips" style="display: none; flex-direction: column; gap: 20px;">
             <div class="section-title">
-                <i class="fa-solid fa-lightbulb"></i> Tips & Panduan Keamanan
+                <i class="fa-solid fa-lightbulb"></i>
+                <span>Tips JB & Panduan Keamanan</span>
             </div>
 
+            <!-- Filter Hashtag -->
             <div class="filter-container">
                 <button class="filter-btn active" onclick="filterTips('all', this)">#Semua</button>
                 <button class="filter-btn" onclick="filterTips('umum', this)">#umum</button>
@@ -1151,38 +1374,281 @@
             </div>
 
             <div class="tips-container">
+                <!-- Tip 1 -->
                 <div class="tip-card" data-tags="umum">
                     <div class="tip-icon-box"><i class="fa-brands fa-whatsapp"></i></div>
-                    <div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span></div>
                         <h3 class="tip-title">Cara WA Ga Gampang Kenon</h3>
-                        <div class="tip-content">Kaitkan ke email dan pasang v2l, hindari chat spam atau mengirim pesan bermuatan unsur melanggar.</div>
+                        <div class="tip-content">
+                            Kaitkan ke email dan pasang v2l, lalu jangan sering-sering chat duluan orang yg belum di save, serta hindari chat spam/unsur yg buruk.
+                        </div>
                     </div>
                 </div>
 
+                <!-- Tip 2 -->
                 <div class="tip-card" data-tags="google">
                     <div class="tip-icon-box"><i class="fa-solid fa-robot"></i></div>
-                    <div>
-                        <h3 class="tip-title">Hindari Bug Robot Google</h3>
-                        <div class="tip-content">Pastikan kamu device kedua yang login. Minta seller kaitkan nomor v2l agar bisa dipulihkan jika terkena bug.</div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#google</span></div>
+                        <h3 class="tip-title">Cara Hindari/Mengatasi Bug Robot</h3>
+                        <div class="tip-content">
+                            Pastikan kamu device kedua yang login (dev ke 3 = bug robot). Minta penjual untuk kaitkan nomor v2l agar bisa dipulihkan jika terkena bug robot.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 3 -->
+                <div class="tip-card" data-tags="ff mlbb">
+                    <div class="tip-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#ff</span> <span class="tip-tag-pill">#mlbb</span></div>
+                        <h3 class="tip-title">Cara Amanin Akun Lengket</h3>
+                        <div class="tip-content">
+                            <p><strong>FF:</strong> langsung rebind aja.</p>
+                            <p><strong>ML:</strong> kaitin pemulihan dan v2l dahulu, lalu ubah umur ke 2020 dan kait family, setelah itu ubah umur ke 2000 lewat family link.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 4 -->
+                <div class="tip-card" data-tags="mlbb">
+                    <div class="tip-icon-box"><i class="fa-solid fa-gamepad"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#mlbb</span></div>
+                        <h3 class="tip-title">Cara Kaitin Moonton Di Akun Monkos (Moonton Kosong)</h3>
+                        <div class="tip-content">
+                            Login ke MCGG, ke pengaturan, lalu ganti akun dan pilih MLBB. Jika ada akun MCGG langsung saja pencet Moonton dan kaitkan email yg mau dikaitkan. Jika gada akun MCGG maka selesaikan tutorial dahulu lalu lakukan seperti step di atas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 5 -->
+                <div class="tip-card" data-tags="umum">
+                    <div class="tip-icon-box"><i class="fa-solid fa-user-shield"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span></div>
+                        <h3 class="tip-title">Cara Hindari Riper / Penipu</h3>
+                        <div class="tip-content">
+                            Gunakan rekber terpercaya seperti Shinji Hirako, Cikal, Julie Sean, Itsuga, Agifxml, Ijat, dan Admin terpercaya lainnya.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 6 -->
+                <div class="tip-card" data-tags="google">
+                    <div class="tip-icon-box"><i class="fa-solid fa-arrows-rotate"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#google</span></div>
+                        <h3 class="tip-title">Cara Rebind</h3>
+                        <div class="tip-content">
+                            Kaitkan bind ke email lain, lalu loginkan ke platform lain lewat log bind atau plat. 
+                            Setelah itu ke google, info pribadi, dan ubah umur ke 2020, setelah muncul "siapkan pengawasan" lanjutkan sampai selesai (ikuti saja langkah² nya). Setelah terkait login ke email orang tua di family link dan hapus permanen.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 7 -->
+                <div class="tip-card" data-tags="google">
+                    <div class="tip-icon-box"><i class="fa-solid fa-trash-arrow-up"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#google</span></div>
+                        <h3 class="tip-title">Cara Pulihkan akun dihapus permanen</h3>
+                        <div class="tip-content">
+                            Login ke email orang tua ke keluarga, lihat keluarga yg dihapus, pilih akun yg terhapus lalu pulihkan, dan cek di family link. <br>
+                            <em>*Berlaku jika belum lama dihapus</em>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 8 -->
+                <div class="tip-card" data-tags="google">
+                    <div class="tip-icon-box"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#google</span></div>
+                        <h3 class="tip-title">Cara hindari domain palsu</h3>
+                        <div class="tip-content">
+                            Saat login ke google hanya masukan nama email saja agar domainnya terisi otomatis. <br>
+                            Contoh "akunshinji@gmail.com" ditulis hanya "akunshinji".
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 9 -->
+                <div class="tip-card" data-tags="google">
+                    <div class="tip-icon-box"><i class="fa-solid fa-lock"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#google</span></div>
+                        <h3 class="tip-title">Cara amanin akun google polos</h3>
+                        <div class="tip-content">
+                            Minta seller kaitkan no dan email pemulihan serta nyalakan v2l dan kaitkan no v2l, lalu ganti pw dan seller allrec.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 10 -->
+                <div class="tip-card" data-tags="google">
+                    <div class="tip-icon-box"><i class="fa-solid fa-cube"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#google</span></div>
+                        <h3 class="tip-title">Cara amanin roblox datver dan datpen</h3>
+                        <div class="tip-content">
+                            Ubah email, ganti pw dan nyalain a2f, lalu suruh seller allrec hapus pesan roblox di email dan di sampah (jangan sampai vidiony putus²).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 11 -->
+                <div class="tip-card" data-tags="ff">
+                    <div class="tip-icon-box"><i class="fa-solid fa-fire"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#ff</span></div>
+                        <h3 class="tip-title">Cara Log bind</h3>
+                        <div class="tip-content">
+                            Saat dimenu login ff, pilih pemulihan di kiri atas, masukan email dan kirim kode, masukkan kode yg diambil dri email lalu pilih platform favoritmu.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 12 -->
+                <div class="tip-card" data-tags="umum">
+                    <div class="tip-icon-box"><i class="fa-solid fa-qrcode"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span></div>
+                        <h3 class="tip-title">Cara Hindari trik scam</h3>
+                        <div class="tip-content">
+                            Jangan tf qris yg dikirim oleh seller walaupun terlihat sama/mirip, hanya tf ke qris yg dikirimkan langsung oleh admin rekber.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 13 -->
+                <div class="tip-card" data-tags="umum">
+                    <div class="tip-icon-box"><i class="fa-solid fa-users-slash"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span></div>
+                        <h3 class="tip-title">Cara hindari trik scam 2 grup</h3>
+                        <div class="tip-content">
+                            Pastikan hanya kirim bukti tf, chat dan tanya tanya. Hanya di grup rekber dengan admin asli.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 14 -->
+                <div class="tip-card" data-tags="mlbb">
+                    <div class="tip-icon-box"><i class="fa-solid fa-key"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#mlbb</span></div>
+                        <h3 class="tip-title">Cara ganti pw moonton kgm</h3>
+                        <div class="tip-content">
+                            Ke settingan ml, ganti akun dan pilih moonton, lalu pilih lupa sandi dan masukkan email, ganti pw melalui link yg dikirim di email.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 15 -->
+                <div class="tip-card" data-tags="umum google">
+                    <div class="tip-icon-box"><i class="fa-solid fa-envelope-open-text"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span> <span class="tip-tag-pill">#google</span></div>
+                        <h3 class="tip-title">Cara atasi email lemot</h3>
+                        <div class="tip-content">
+                            Download mailtime login ke akun google.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 16 -->
+                <div class="tip-card" data-tags="mlbb">
+                    <div class="tip-icon-box"><i class="fa-solid fa-mobile-xmark"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#mlbb</span></div>
+                        <h3 class="tip-title">Cara kick device tapi kgm</h3>
+                        <div class="tip-content">
+                            Tidak ada, sewa jasa ke shinji aja.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 17 -->
+                <div class="tip-card" data-tags="mlbb">
+                    <div class="tip-icon-box"><i class="fa-solid fa-repeat"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#mlbb</span></div>
+                        <h3 class="tip-title">Cara change email moonton (di device baru)</h3>
+                        <div class="tip-content">
+                            Tidak ada, sewa jasa ke shinji aja.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 18 -->
+                <div class="tip-card" data-tags="mlbb">
+                    <div class="tip-icon-box"><i class="fa-solid fa-ban"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#mlbb</span></div>
+                        <h3 class="tip-title">Cara agar akun ml tidak ditabrak oleh penjual lama</h3>
+                        <div class="tip-content">
+                            1. Kick device di pusat akun dan manajemen perangkat, jika kgm sewa jasa shinji aja. <br>
+                            2. Nyalakan v2l ml dan kode sekunder. <br>
+                            3. Sebelum done, suruh seller allrec ganti akun/out.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 19 -->
+                <div class="tip-card" data-tags="umum ff">
+                    <div class="tip-icon-box"><i class="fa-brands fa-facebook"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span> <span class="tip-tag-pill">#ff</span></div>
+                        <h3 class="tip-title">Cara amanin ff log fb</h3>
+                        <div class="tip-content">
+                            Rebind aja, lalu ganti profil dengan logo meta dan pastikan akunnya udah kekunci/Kenonaktif.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip 20 -->
+                <div class="tip-card" data-tags="umum mlbb">
+                    <div class="tip-icon-box"><i class="fa-brands fa-facebook-f"></i></div>
+                    <div class="tip-body">
+                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span> <span class="tip-tag-pill">#mlbb</span></div>
+                        <h3 class="tip-title">Cara amanin ml log fb</h3>
+                        <div class="tip-content">
+                            Langsung kaitkan ke moonton aja pakai cara kaitkan moonton.
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Note Bawah Tips -->
+            <div class="tips-note-bottom">
+                Itu hanya beberapa tips jb dariku semoga bermanfaat ya
+            </div>
         </div>
 
-        <!-- FOOTER -->
+        <!-- Footer -->
         <div class="footer">
             <p>&copy; 2025 - 2026 <span>Shinji Hirako Store</span>. All Rights Reserved.</p>
+            <p style="margin-top: 4px; opacity: 0.7; font-size: 0.75rem;">Terpercaya, Aman & Murah Meriah</p>
         </div>
-
     </div>
 
-    <!-- FLOATING BALLOON WA -->
+    <!-- Floating Balloon WhatsApp -->
     <a href="https://wa.me/6283199265399" target="_blank" class="floating-wa-balloon">
         <i class="fa-brands fa-whatsapp"></i>
-        <span>Chat Shinji</span>
+        <span>chat shinji</span>
     </a>
 
-    <!-- FLOATING MUSIC BAR FIXED (24/7 Song - 247_romario.mp3) -->
+    <!-- Lightbox Modal untuk Traktir/QRIS -->
+    <div class="lightbox-modal" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Preview Large">
+        </div>
+    </div>
+
+    <!-- Floating Audio Player Bar (Full Tampilan Utuh) -->
     <div class="music-bar-container">
         <div class="music-bar" id="musicBar">
             <div class="music-info">
@@ -1198,12 +1664,17 @@
         </div>
     </div>
 
-    <!-- AUDIO ELEMENT -->
+    <!-- Audio Element -->
     <audio id="bgMusic" loop src="247_romario.mp3" preload="auto"></audio>
 
     <script>
-        // 1. LOGIK STATUS ONLINE / OFFLINE OTOMATIS (07:00 - 24:00 WITA / UTC+8)
-        function updateWitaStatus() {
+        function handleLogoError() {
+            document.getElementById('userLogo').style.display = 'none';
+            document.getElementById('avatarText').style.display = 'flex';
+        }
+
+        // 1. Status Online / Offline Otomatis berdasarkan WITA (07:00 - 24:00 WITA)
+        function checkWITAStatus() {
             const now = new Date();
             const utcHours = now.getUTCHours();
             const witaHours = (utcHours + 8) % 24;
@@ -1219,21 +1690,10 @@
                 statusText.innerHTML = 'Offline 🔴';
             }
         }
-        updateWitaStatus();
-        setInterval(updateWitaStatus, 30000);
+        checkWITAStatus();
+        setInterval(checkWITAStatus, 30000);
 
-        // 2. FAQ ACCORDION INTERAKSI
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', () => {
-                const parent = item.parentElement;
-                document.querySelectorAll('.faq-card').forEach(card => {
-                    if (card !== parent) card.classList.remove('active');
-                });
-                parent.classList.toggle('active');
-            });
-        });
-
-        // 3. DROPDOWN MENU & TAB SWITCHER
+        // 2. Navigation Menu Dropdown & Tab Switcher
         function toggleMenu() {
             document.getElementById('dropdownMenu').classList.toggle('show');
         }
@@ -1249,22 +1709,36 @@
                 tabTips.style.display = 'none';
                 navHome.classList.add('active');
                 navTips.classList.remove('active');
-            } else {
+            } else if (tab === 'tips') {
                 tabHome.style.display = 'none';
                 tabTips.style.display = 'flex';
                 navTips.classList.add('active');
                 navHome.classList.remove('active');
             }
+
             document.getElementById('dropdownMenu').classList.remove('show');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 4. FILTER TIPS
+        // 3. FAQ Accordion Toggle Smooth
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                document.querySelectorAll('.faq-card').forEach(card => {
+                    if (card !== parent) card.classList.remove('active');
+                });
+                parent.classList.toggle('active');
+            });
+        });
+
+        // 4. Filtering Tips dengan Hashtag
         function filterTips(tag, btnElement) {
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
             if(btnElement) btnElement.classList.add('active');
 
-            document.querySelectorAll('.tip-card').forEach(card => {
+            const tipCards = document.querySelectorAll('.tip-card');
+            tipCards.forEach(card => {
                 const tags = card.getAttribute('data-tags');
                 if (tag === 'all' || (tags && tags.includes(tag))) {
                     card.classList.remove('hidden');
@@ -1274,7 +1748,26 @@
             });
         }
 
-        // 5. PEMUTAR MUSIK 24/7 SONG
+        window.addEventListener('click', function(e) {
+            const menuBtn = document.getElementById('menuBtn');
+            const dropdown = document.getElementById('dropdownMenu');
+            if (menuBtn && !menuBtn.contains(e.target) && dropdown && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+
+        function openLightbox(imgUrl) {
+            document.getElementById('lightbox-img').src = imgUrl;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 5. Music Player Toggle Logic
         const bgMusic = document.getElementById('bgMusic');
         const playIcon = document.getElementById('playIcon');
         const musicBar = document.getElementById('musicBar');
@@ -1284,7 +1777,9 @@
                 bgMusic.play().then(() => {
                     playIcon.className = 'fa-solid fa-pause';
                     musicBar.classList.add('playing');
-                }).catch(err => console.log("Autoplay blocked"));
+                }).catch(err => {
+                    console.log("Autoplay diblokir browser");
+                });
             } else {
                 bgMusic.pause();
                 playIcon.className = 'fa-solid fa-play';
@@ -1292,8 +1787,7 @@
             }
         }
 
-        // Autoplay saat sentuhan pertama di layar
-        document.addEventListener('click', function enableAudio() {
+        document.addEventListener('touchstart', function autoPlayOnTouch() {
             if (bgMusic.paused) {
                 bgMusic.play().then(() => {
                     playIcon.className = 'fa-solid fa-pause';
