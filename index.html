@@ -18,17 +18,17 @@
             --primary: #dc2626;
             --primary-hover: #b91c1c;
             --primary-light: #fef2f2;
-            --primary-glow: rgba(220, 38, 38, 0.25);
+            --primary-glow: rgba(220, 38, 38, 0.35);
             --accent-green: #10b981;
             --accent-red: #ef4444;
             --text-dark: #0f172a;
             --text-muted: #64748b;
             --border-color: #f1f5f9;
-            --radius-lg: 20px;
-            --radius-md: 14px;
+            --radius-lg: 24px;
+            --radius-md: 16px;
             --shadow-subtle: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 20px 35px -5px rgba(220, 38, 38, 0.18);
-            --transition-smooth: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --shadow-hover: 0 20px 35px -5px rgba(220, 38, 38, 0.22);
+            --transition-smooth: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         * {
@@ -45,8 +45,8 @@
             min-height: 100vh;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 10%, rgba(220, 38, 38, 0.04) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(220, 38, 38, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 10% 10%, rgba(220, 38, 38, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(220, 38, 38, 0.06) 0%, transparent 40%),
                 radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 100%);
             background-attachment: fixed;
             padding-bottom: 120px;
@@ -61,14 +61,14 @@
             pointer-events: none;
             z-index: 0;
             opacity: 0.6;
-            background-image: radial-gradient(rgba(220, 38, 38, 0.12) 1px, transparent 1px);
+            background-image: radial-gradient(rgba(220, 38, 38, 0.14) 1px, transparent 1px);
             background-size: 24px 24px;
-            animation: bgPulse 8s ease-in-out infinite alternate;
+            animation: bgPulse 6s ease-in-out infinite alternate;
         }
 
         @keyframes bgPulse {
             0% { opacity: 0.4; transform: scale(1); }
-            100% { opacity: 0.7; transform: scale(1.02); }
+            100% { opacity: 0.8; transform: scale(1.03); }
         }
 
         .container {
@@ -82,22 +82,22 @@
             gap: 28px;
         }
 
-        /* --- PROFILE CARD SECTION --- */
+        /* --- PROFILE CARD SPEK DEWA --- */
         .profile-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid rgba(255, 255, 255, 0.9);
             border-radius: var(--radius-lg);
-            padding: 36px 24px 28px 24px;
+            padding: 38px 24px 30px 24px;
             text-align: center;
-            box-shadow: var(--shadow-subtle);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
             position: relative;
-            animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.92) translateY(20px); }
+            from { opacity: 0; transform: scale(0.9) translateY(30px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
@@ -110,7 +110,7 @@
             height: 6px;
             background: linear-gradient(90deg, #dc2626, #ef4444, #f87171, #dc2626);
             background-size: 200% 100%;
-            animation: gradientMove 4s linear infinite;
+            animation: gradientMove 3s linear infinite;
             border-top-left-radius: var(--radius-lg);
             border-top-right-radius: var(--radius-lg);
         }
@@ -130,9 +130,9 @@
 
         .menu-btn {
             background: rgba(220, 38, 38, 0.08);
-            border: 1px solid rgba(220, 38, 38, 0.15);
-            width: 40px;
-            height: 40px;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            width: 42px;
+            height: 42px;
             border-radius: 12px;
             cursor: pointer;
             display: flex;
@@ -146,11 +146,11 @@
         .menu-btn:hover, .menu-btn:active {
             background: var(--primary);
             border-color: var(--primary);
-            transform: scale(1.08) rotate(90deg);
+            transform: scale(1.1) rotate(90deg);
         }
 
         .menu-btn span {
-            width: 18px;
+            width: 20px;
             height: 2.5px;
             background-color: var(--primary);
             border-radius: 4px;
@@ -163,20 +163,20 @@
             display: none;
             position: absolute;
             right: 0;
-            top: 48px;
+            top: 50px;
             background: #ffffff;
-            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
-            border-radius: 14px;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.18);
+            border-radius: 16px;
             overflow: hidden;
-            width: 140px;
+            width: 150px;
             border: 1px solid #f1f5f9;
             z-index: 30;
-            animation: fadeIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: menuPopup 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes menuPopup {
+            from { opacity: 0; transform: scale(0.8) translateY(-12px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .dropdown-menu.show { display: block; }
@@ -184,33 +184,35 @@
         .dropdown-menu a {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 16px;
+            gap: 12px;
+            padding: 14px 18px;
             text-decoration: none;
             color: var(--text-dark);
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             font-weight: 600;
             transition: var(--transition-smooth);
         }
 
         .dropdown-menu a i { transition: var(--transition-smooth); }
-        .dropdown-menu a:hover i { transform: scale(1.2) rotate(10deg); color: var(--primary); }
+        .dropdown-menu a:hover i { transform: scale(1.3) rotate(15deg); color: var(--primary); }
 
         .dropdown-menu a:hover, .dropdown-menu a.active {
             background-color: var(--primary-light);
             color: var(--primary);
-            padding-left: 20px;
+            padding-left: 22px;
         }
 
-        /* Avatar Container & Centang Biru Premium */
+        /* AVATAR ROTASI 360 SPEK DEWA */
         .avatar-wrapper {
             position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 18px;
+            width: 115px;
+            height: 115px;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            perspective: 1000px;
         }
 
         .avatar {
@@ -218,26 +220,29 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 10px 25px var(--primary-glow);
+            box-shadow: 0 12px 28px var(--primary-glow);
             border: 4px solid #ffffff;
             position: relative;
             z-index: 2;
             background: #ffffff;
-            transition: var(--transition-smooth);
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
         }
 
-        .avatar-wrapper:hover .avatar { transform: scale(1.05); }
+        .avatar-wrapper:hover .avatar {
+            transform: rotateY(360deg) scale(1.08);
+            box-shadow: 0 18px 36px rgba(220, 38, 38, 0.45);
+        }
 
         .avatar-ring {
             position: absolute;
-            top: -7px;
-            left: -7px;
-            right: -7px;
-            bottom: -7px;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
             border-radius: 50%;
             border: 3px dashed #dc2626;
-            animation: spinRing 12s linear infinite;
-            opacity: 0.8;
+            animation: spinRing 10s linear infinite;
+            opacity: 0.85;
             z-index: 1;
         }
 
@@ -249,30 +254,30 @@
             right: 2px;
             background: linear-gradient(135deg, #0072ff, #00c6ff);
             color: white;
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             border: 2px solid white;
             z-index: 3;
             box-shadow: 0 4px 12px rgba(0, 114, 255, 0.4);
             overflow: hidden;
-            animation: pulseGlow 2s infinite alternate;
+            animation: badgePulse 2s infinite alternate;
         }
 
-        .verified-badge i { animation: iconBounce 2s infinite ease-in-out; }
-
-        @keyframes iconBounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+        @keyframes badgePulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
         }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 4px 12px rgba(0, 114, 255, 0.4); }
-            100% { box-shadow: 0 6px 18px rgba(0, 114, 255, 0.8); }
+        .verified-badge i { animation: checkRotate 3s ease-in-out infinite alternate; }
+
+        @keyframes checkRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(15deg) scale(1.1); }
         }
 
         .verified-badge::after {
@@ -283,7 +288,7 @@
             width: 200%;
             height: 200%;
             background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.8) 50%, transparent 70%);
-            animation: badgeShimmer 2.5s infinite;
+            animation: badgeShimmer 2.2s infinite;
         }
 
         @keyframes badgeShimmer {
@@ -293,7 +298,7 @@
 
         .profile-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: 800;
             color: var(--text-dark);
             margin-bottom: 6px;
@@ -305,87 +310,81 @@
             color: var(--text-muted);
             line-height: 1.6;
             max-width: 520px;
-            margin: 0 auto 16px;
+            margin: 0 auto 18px;
             font-weight: 500;
         }
 
-        /* STATUS BADGE ONLINE / OFFLINE (1 INDIKATOR) */
+        /* STATUS BADGE ONLINE HIJAU TERANG BESAR KECIL (TANPA DENYUT LIGHTING PENDAR) */
         .status-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             background: #ffffff;
-            border: 1px solid var(--border-color);
-            padding: 6px 16px;
+            border: 1.5px solid var(--border-color);
+            padding: 8px 20px;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: 700;
             box-shadow: var(--shadow-subtle);
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
 
+        /* Titik Hijau Terang Murni (Scale Breathing) */
         .status-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             display: inline-block;
         }
 
         .status-dot.online {
-            background-color: var(--accent-green);
-            box-shadow: 0 0 10px var(--accent-green);
-            animation: pulseOnline 1.6s infinite;
+            background-color: #00e676; /* Hijau Terang Murni */
+            animation: sizeBreathing 1.5s ease-in-out infinite alternate;
         }
 
         .status-dot.offline {
             background-color: var(--accent-red);
-            box-shadow: 0 0 10px var(--accent-red);
-            animation: pulseOffline 2s infinite;
+            animation: sizeBreathing 2s ease-in-out infinite alternate;
         }
 
-        @keyframes pulseOnline {
-            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-        }
-
-        @keyframes pulseOffline {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+        /* Animasi Besar Kecil Ukuran Saja */
+        @keyframes sizeBreathing {
+            0% { transform: scale(0.8); }
+            100% { transform: scale(1.35); }
         }
 
         .badge-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
 
         .badge-pill {
             background: var(--primary-light);
             color: var(--primary);
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             font-weight: 700;
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 50px;
             border: 1px solid rgba(220, 38, 38, 0.15);
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             transition: var(--transition-smooth);
         }
 
         .badge-pill i { transition: var(--transition-smooth); }
-        .badge-pill:hover { transform: translateY(-3px) scale(1.05); background: var(--primary); color: white; }
-        .badge-pill:hover i { transform: rotate(20deg) scale(1.2); }
+        .badge-pill:hover { transform: translateY(-4px) scale(1.06); background: var(--primary); color: white; }
+        .badge-pill:hover i { transform: rotate(25deg) scale(1.25); }
 
         /* --- SECTION TITLES & ANIMATED ICONS --- */
         .section-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.15rem;
+            font-size: 1.18rem;
             font-weight: 700;
             color: var(--text-dark);
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -393,16 +392,33 @@
 
         .section-title i {
             color: var(--primary);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             animation: floatIcon 3s ease-in-out infinite alternate;
             transition: var(--transition-smooth);
         }
 
-        .section-title:hover i { transform: rotate(180deg) scale(1.2); }
+        .section-title:hover i { transform: rotate(180deg) scale(1.3); }
 
         @keyframes floatIcon {
             0% { transform: translateY(0); }
-            100% { transform: translateY(-5px); }
+            100% { transform: translateY(-6px); }
+        }
+
+        /* ANIMASI PERPINDAHAN TAB SMOOTH STAGGERED */
+        .tab-content {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .tab-content.tab-enter {
+            animation: tabSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes tabSlideIn {
+            from { opacity: 0; transform: translateY(25px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         /* --- LINKS GRID --- */
@@ -426,12 +442,28 @@
             font-size: 1rem;
             box-shadow: var(--shadow-subtle);
             transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
         }
+
+        .btn-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.6s;
+        }
+
+        .btn-link:hover::after { left: 100%; }
 
         .btn-link .btn-content {
             display: flex;
             align-items: center;
             gap: 16px;
+            z-index: 2;
         }
 
         .btn-link .btn-icon {
@@ -461,11 +493,12 @@
             font-size: 0.9rem;
             color: var(--text-muted);
             transition: var(--transition-smooth);
+            z-index: 2;
         }
 
         .btn-link:hover { transform: translateY(-4px) scale(1.01); box-shadow: var(--shadow-hover); }
-        .btn-link:hover .btn-icon { transform: scale(1.18) rotate(-10deg); }
-        .btn-link:hover .arrow-icon { transform: translateX(6px) scale(1.2); color: var(--primary); }
+        .btn-link:hover .btn-icon { transform: scale(1.2) rotate(-12deg); }
+        .btn-link:hover .arrow-icon { transform: translateX(8px) scale(1.25); color: var(--primary); }
 
         /* --- HORIZONTAL SLIDER JASA --- */
         .services-wrapper {
@@ -479,11 +512,11 @@
         .note-badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             background: #fff7ed;
             color: #c2410c;
             border: 1px dashed #fdba74;
-            padding: 8px 14px;
+            padding: 8px 16px;
             border-radius: 30px;
             font-size: 0.83rem;
             font-weight: 600;
@@ -525,8 +558,8 @@
         .service-card:hover {
             border-color: var(--primary);
             background: #ffffff;
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.12);
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 12px 24px rgba(220, 38, 38, 0.15);
         }
 
         .service-info { display: flex; align-items: center; gap: 12px; }
@@ -548,7 +581,7 @@
         .service-card:hover .service-icon {
             background: var(--primary);
             color: white;
-            transform: rotate(-10deg) scale(1.15);
+            transform: rotate(-15deg) scale(1.2);
         }
 
         .service-name { font-weight: 700; font-size: 0.92rem; color: var(--text-dark); line-height: 1.3; }
@@ -557,7 +590,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
             background: var(--primary);
             color: white;
             text-decoration: none;
@@ -569,8 +602,8 @@
         }
 
         .btn-order i { transition: var(--transition-smooth); }
-        .btn-order:hover { background: var(--primary-hover); box-shadow: 0 4px 12px var(--primary-glow); transform: scale(1.03); }
-        .btn-order:hover i { transform: scale(1.2) rotate(15deg); }
+        .btn-order:hover { background: var(--primary-hover); box-shadow: 0 4px 12px var(--primary-glow); transform: scale(1.04); }
+        .btn-order:hover i { transform: scale(1.25) rotate(15deg); }
 
         /* Traktir Shinji Button */
         .traktir-card {
@@ -585,7 +618,7 @@
             transition: var(--transition-smooth);
         }
 
-        .traktir-card:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 8px 20px rgba(249, 115, 22, 0.2); }
+        .traktir-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 10px 24px rgba(249, 115, 22, 0.22); }
         .traktir-content { display: flex; align-items: center; gap: 14px; }
 
         .traktir-icon {
@@ -601,12 +634,12 @@
             transition: var(--transition-smooth);
         }
 
-        .traktir-card:hover .traktir-icon { transform: rotate(20deg) scale(1.15); }
+        .traktir-card:hover .traktir-icon { transform: rotate(25deg) scale(1.2); }
 
         .traktir-title { font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 800; color: #9a3412; }
         .traktir-sub { font-size: 0.78rem; color: #c2410c; font-weight: 500; }
 
-        /* --- TESTIMONI SECTION (SLIDER GESER KE KANAN & KUNCI ZOOM) --- */
+        /* --- TESTIMONI SECTION --- */
         .testi-card-wrapper {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
@@ -641,11 +674,10 @@
             animation: pulseStar 2s infinite alternate;
         }
 
-        @keyframes pulseStar { 0% { transform: scale(1); } 100% { transform: scale(1.25); } }
+        @keyframes pulseStar { 0% { transform: scale(1); } 100% { transform: scale(1.3); } }
 
         .testi-stat-item span { color: var(--primary); font-weight: 800; }
 
-        /* Horizontal Slider Testimoni (Sesuai Maksud: BISA DIGESER Samping) */
         .testi-slider {
             display: flex;
             gap: 16px;
@@ -669,7 +701,6 @@
             background: #f1f5f9;
             box-shadow: 0 6px 16px rgba(0,0,0,0.06);
             border: 1px solid #e2e8f0;
-            /* Dikunci agar gabisa dipencet / zoom popup */
             pointer-events: none;
             user-select: none;
             -webkit-user-drag: none;
@@ -699,7 +730,7 @@
             box-shadow: var(--shadow-subtle);
         }
 
-        .faq-card:hover { border-color: rgba(220, 38, 38, 0.3); }
+        .faq-card:hover { border-color: rgba(220, 38, 38, 0.35); }
 
         .faq-question {
             padding: 16px 20px;
@@ -722,7 +753,7 @@
             transition: var(--transition-smooth);
         }
 
-        .faq-card:hover .faq-question i.fa-solid:not(.faq-icon) { transform: scale(1.2) rotate(10deg); }
+        .faq-card:hover .faq-question i.fa-solid:not(.faq-icon) { transform: scale(1.25) rotate(12deg); }
 
         .faq-icon {
             font-size: 0.9rem;
@@ -742,7 +773,7 @@
             line-height: 1.6;
         }
 
-        .faq-card.active { border-color: var(--primary); box-shadow: 0 6px 20px rgba(220, 38, 38, 0.12); }
+        .faq-card.active { border-color: var(--primary); box-shadow: 0 6px 20px rgba(220, 38, 38, 0.14); }
         .faq-card.active .faq-icon { transform: rotate(180deg); color: var(--primary); }
         .faq-card.active .faq-answer { max-height: 200px; opacity: 1; padding: 14px 20px 18px; }
 
@@ -768,7 +799,12 @@
             cursor: pointer;
             white-space: nowrap;
             transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
+
+        .filter-btn i { transition: var(--transition-smooth); }
 
         .filter-btn:hover, .filter-btn.active {
             background: var(--primary);
@@ -777,6 +813,8 @@
             box-shadow: 0 4px 12px var(--primary-glow);
             transform: translateY(-2px);
         }
+
+        .filter-btn:hover i, .filter-btn.active i { transform: scale(1.2) rotate(10deg); }
 
         .tips-container { display: flex; flex-direction: column; gap: 16px; }
 
@@ -795,7 +833,7 @@
 
         .tip-card.hidden { display: none !important; }
 
-        .tip-card:hover { transform: translateY(-3px) translateX(3px); box-shadow: 0 10px 20px rgba(0,0,0,0.06); }
+        .tip-card:hover { transform: translateY(-4px) translateX(4px); box-shadow: 0 10px 20px rgba(0,0,0,0.06); }
 
         .tip-icon-box {
             width: 44px;
@@ -815,7 +853,7 @@
         .tip-card:hover .tip-icon-box {
             background: var(--primary);
             color: white;
-            transform: rotate(10deg) scale(1.1);
+            transform: rotate(15deg) scale(1.15);
         }
 
         .tip-body { flex: 1; }
@@ -829,6 +867,9 @@
             background: var(--primary-light);
             padding: 2px 8px;
             border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .tip-title { font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
@@ -845,6 +886,10 @@
             font-size: 0.9rem;
             margin-top: 24px;
             animation: pulseSoft 2s infinite alternate;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         /* Lightbox Modal */
@@ -914,14 +959,14 @@
 
         .floating-wa-balloon i { font-size: 1.25rem; transition: var(--transition-smooth); }
         .floating-wa-balloon:hover { transform: scale(1.08) translateY(-4px); }
-        .floating-wa-balloon:hover i { transform: rotate(15deg) scale(1.2); }
+        .floating-wa-balloon:hover i { transform: rotate(180deg) scale(1.2); }
 
         @keyframes floatUpDown {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
 
-        /* Floating Audio Player Bar (Display Full) */
+        /* Floating Audio Player Bar (Display Penuh) */
         .music-bar-container {
             position: fixed;
             bottom: 16px;
@@ -1026,7 +1071,8 @@
                 </div>
             </div>
 
-            <div class="avatar-wrapper">
+            <!-- Avatar 360° Rotasi Interaktif -->
+            <div class="avatar-wrapper" title="Sentuh/Hover untuk Putar 360°">
                 <div class="avatar-ring"></div>
                 <img id="userLogo" src="https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/9d83ffeb-380c-41c1-95c2-2405263f611e.jpg" alt="Shinji Hirako Store" class="avatar" onerror="handleLogoError()">
                 <div id="avatarText" class="avatar avatar-fallback" style="display: none;">SH</div>
@@ -1042,7 +1088,7 @@
                 Melayani dengan cepat, profesional, dan anti drama!
             </p>
 
-            <!-- Status Online/Offline Automatic WITA (Indikator Tunggal) -->
+            <!-- Status Online Hijau Terang Besar-Kecil (Tanpa Denyut Lighting Pendar) -->
             <div class="status-badge">
                 <span id="status-dot" class="status-dot"></span>
                 <span id="status-text">Memeriksa...</span>
@@ -1056,7 +1102,7 @@
         </div>
 
         <!-- TAB CONTENT: HOME -->
-        <div id="tabHome" style="display: flex; flex-direction: column; gap: 28px;">
+        <div id="tabHome" class="tab-content tab-enter">
             <!-- Tautan Resmi -->
             <div>
                 <div class="section-title">
@@ -1194,7 +1240,7 @@
                 <i class="fa-solid fa-qrcode" style="font-size: 1.4rem; color: #f97316;"></i>
             </div>
 
-            <!-- Testimoni Kami Section (Lengkap 10 Gambar & Horizontal Scroll) -->
+            <!-- Testimoni Kami Section -->
             <div>
                 <div class="section-title">
                     <i class="fa-solid fa-comments"></i>
@@ -1288,26 +1334,26 @@
             </div>
         </div>
 
-        <!-- TAB CONTENT: TIPS JB (20 TIPS LENGKAP) -->
-        <div id="tabTips" style="display: none; flex-direction: column; gap: 20px;">
+        <!-- TAB CONTENT: TIPS JB (20 TIPS LENGKAP & FULL IKON) -->
+        <div id="tabTips" class="tab-content" style="display: none;">
             <div class="section-title">
                 <i class="fa-solid fa-lightbulb"></i>
                 <span>Tips JB & Panduan Keamanan</span>
             </div>
 
             <div class="filter-container">
-                <button class="filter-btn active" onclick="filterTips('all', this)">#Semua</button>
-                <button class="filter-btn" onclick="filterTips('umum', this)">#umum</button>
-                <button class="filter-btn" onclick="filterTips('google', this)">#google</button>
-                <button class="filter-btn" onclick="filterTips('ff', this)">#ff</button>
-                <button class="filter-btn" onclick="filterTips('mlbb', this)">#mlbb</button>
+                <button class="filter-btn active" onclick="filterTips('all', this)"><i class="fa-solid fa-border-all"></i> #Semua</button>
+                <button class="filter-btn" onclick="filterTips('umum', this)"><i class="fa-solid fa-globe"></i> #umum</button>
+                <button class="filter-btn" onclick="filterTips('google', this)"><i class="fa-brands fa-google"></i> #google</button>
+                <button class="filter-btn" onclick="filterTips('ff', this)"><i class="fa-solid fa-fire"></i> #ff</button>
+                <button class="filter-btn" onclick="filterTips('mlbb', this)"><i class="fa-solid fa-gamepad"></i> #mlbb</button>
             </div>
 
             <div class="tips-container">
                 <div class="tip-card" data-tags="umum">
                     <div class="tip-icon-box"><i class="fa-brands fa-whatsapp"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #umum</span></div>
                         <h3 class="tip-title">Cara WA Ga Gampang Kenon</h3>
                         <div class="tip-content">Kaitkan ke email dan pasang v2l, lalu jangan sering-sering chat duluan orang yg belum di save, serta hindari chat spam/unsur yg buruk.</div>
                     </div>
@@ -1316,7 +1362,7 @@
                 <div class="tip-card" data-tags="google">
                     <div class="tip-icon-box"><i class="fa-solid fa-robot"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#google</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #google</span></div>
                         <h3 class="tip-title">Cara Hindari/Mengatasi Bug Robot</h3>
                         <div class="tip-content">Pastikan kamu device kedua yang login (dev ke 3 = bug robot). Minta penjual untuk kaitkan nomor v2l agar bisa dipulihkan jika terkena bug robot.</div>
                     </div>
@@ -1325,7 +1371,7 @@
                 <div class="tip-card" data-tags="ff mlbb">
                     <div class="tip-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#ff</span> <span class="tip-tag-pill">#mlbb</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #ff</span> <span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #mlbb</span></div>
                         <h3 class="tip-title">Cara Amanin Akun Lengket</h3>
                         <div class="tip-content">
                             <p><strong>FF:</strong> langsung rebind aja.</p>
@@ -1337,7 +1383,7 @@
                 <div class="tip-card" data-tags="mlbb">
                     <div class="tip-icon-box"><i class="fa-solid fa-gamepad"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#mlbb</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #mlbb</span></div>
                         <h3 class="tip-title">Cara Kaitin Moonton Di Akun Monkos (Moonton Kosong)</h3>
                         <div class="tip-content">Login ke MCGG, ke pengaturan, lalu ganti akun dan pilih MLBB. Jika ada akun MCGG langsung saja pencet Moonton dan kaitkan email yg mau dikaitkan. Jika gada akun MCGG maka selesaikan tutorial dahulu lalu lakukan seperti step di atas.</div>
                     </div>
@@ -1346,7 +1392,7 @@
                 <div class="tip-card" data-tags="umum">
                     <div class="tip-icon-box"><i class="fa-solid fa-user-shield"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #umum</span></div>
                         <h3 class="tip-title">Cara Hindari Riper / Penipu</h3>
                         <div class="tip-content">Gunakan rekber terpercaya seperti Shinji Hirako, Cikal, Julie Sean, Itsuga, Agifxml, Ijat, dan Admin terpercaya lainnya.</div>
                     </div>
@@ -1355,7 +1401,7 @@
                 <div class="tip-card" data-tags="google">
                     <div class="tip-icon-box"><i class="fa-solid fa-arrows-rotate"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#google</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #google</span></div>
                         <h3 class="tip-title">Cara Rebind</h3>
                         <div class="tip-content">Kaitkan bind ke email lain, lalu loginkan ke platform lain lewat log bind atau plat. Setelah itu ke google, info pribadi, dan ubah umur ke 2020, setelah muncul "siapkan pengawasan" lanjutkan sampai selesai (ikuti saja langkah² nya). Setelah terkait login ke email orang tua di family link dan hapus permanen.</div>
                     </div>
@@ -1364,7 +1410,7 @@
                 <div class="tip-card" data-tags="google">
                     <div class="tip-icon-box"><i class="fa-solid fa-trash-arrow-up"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#google</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #google</span></div>
                         <h3 class="tip-title">Cara Pulihkan akun dihapus permanen</h3>
                         <div class="tip-content">Login ke email orang tua ke keluarga, lihat keluarga yg dihapus, pilih akun yg terhapus lalu pulihkan, dan cek di family link. <br><em>*Berlaku jika belum lama dihapus</em></div>
                     </div>
@@ -1373,7 +1419,7 @@
                 <div class="tip-card" data-tags="google">
                     <div class="tip-icon-box"><i class="fa-solid fa-triangle-exclamation"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#google</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #google</span></div>
                         <h3 class="tip-title">Cara hindari domain palsu</h3>
                         <div class="tip-content">Saat login ke google hanya masukan nama email saja agar domainnya terisi otomatis. <br>Contoh "akunshinji@gmail.com" ditulis hanya "akunshinji".</div>
                     </div>
@@ -1382,7 +1428,7 @@
                 <div class="tip-card" data-tags="google">
                     <div class="tip-icon-box"><i class="fa-solid fa-lock"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#google</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #google</span></div>
                         <h3 class="tip-title">Cara amanin akun google polos</h3>
                         <div class="tip-content">Minta seller kaitkan no dan email pemulihan serta nyalakan v2l dan kaitkan no v2l, lalu ganti pw dan seller allrec.</div>
                     </div>
@@ -1391,7 +1437,7 @@
                 <div class="tip-card" data-tags="google">
                     <div class="tip-icon-box"><i class="fa-solid fa-cube"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#google</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #google</span></div>
                         <h3 class="tip-title">Cara amanin roblox datver dan datpen</h3>
                         <div class="tip-content">Ubah email, ganti pw dan nyalain a2f, lalu suruh seller allrec hapus pesan roblox di email dan di sampah (jangan sampai vidiony putus²).</div>
                     </div>
@@ -1400,7 +1446,7 @@
                 <div class="tip-card" data-tags="ff">
                     <div class="tip-icon-box"><i class="fa-solid fa-fire"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#ff</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #ff</span></div>
                         <h3 class="tip-title">Cara Log bind</h3>
                         <div class="tip-content">Saat dimenu login ff, pilih pemulihan di kiri atas, masukan email dan kirim kode, masukkan kode yg diambil dri email lalu pilih platform favoritmu.</div>
                     </div>
@@ -1409,7 +1455,7 @@
                 <div class="tip-card" data-tags="umum">
                     <div class="tip-icon-box"><i class="fa-solid fa-qrcode"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #umum</span></div>
                         <h3 class="tip-title">Cara Hindari trik scam</h3>
                         <div class="tip-content">Jangan tf qris yg dikirim oleh seller walaupun terlihat sama/mirip, hanya tf ke qris yg dikirimkan langsung oleh admin rekber.</div>
                     </div>
@@ -1418,7 +1464,7 @@
                 <div class="tip-card" data-tags="umum">
                     <div class="tip-icon-box"><i class="fa-solid fa-users-slash"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #umum</span></div>
                         <h3 class="tip-title">Cara hindari trik scam 2 grup</h3>
                         <div class="tip-content">Pastikan hanya kirim bukti tf, chat dan tanya tanya. Hanya di grup rekber dengan admin asli.</div>
                     </div>
@@ -1427,7 +1473,7 @@
                 <div class="tip-card" data-tags="mlbb">
                     <div class="tip-icon-box"><i class="fa-solid fa-key"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#mlbb</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #mlbb</span></div>
                         <h3 class="tip-title">Cara ganti pw moonton kgm</h3>
                         <div class="tip-content">Ke settingan ml, ganti akun dan pilih moonton, lalu pilih lupa sandi dan masukkan email, ganti pw melalui link yg dikirim di email.</div>
                     </div>
@@ -1436,7 +1482,7 @@
                 <div class="tip-card" data-tags="umum google">
                     <div class="tip-icon-box"><i class="fa-solid fa-envelope-open-text"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span> <span class="tip-tag-pill">#google</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #umum</span> <span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #google</span></div>
                         <h3 class="tip-title">Cara atasi email lemot</h3>
                         <div class="tip-content">Download mailtime login ke akun google.</div>
                     </div>
@@ -1445,7 +1491,7 @@
                 <div class="tip-card" data-tags="mlbb">
                     <div class="tip-icon-box"><i class="fa-solid fa-mobile-xmark"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#mlbb</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #mlbb</span></div>
                         <h3 class="tip-title">Cara kick device tapi kgm</h3>
                         <div class="tip-content">Tidak ada, sewa jasa ke shinji aja.</div>
                     </div>
@@ -1454,7 +1500,7 @@
                 <div class="tip-card" data-tags="mlbb">
                     <div class="tip-icon-box"><i class="fa-solid fa-repeat"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#mlbb</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #mlbb</span></div>
                         <h3 class="tip-title">Cara change email moonton (di device baru)</h3>
                         <div class="tip-content">Tidak ada, sewa jasa ke shinji aja.</div>
                     </div>
@@ -1463,7 +1509,7 @@
                 <div class="tip-card" data-tags="mlbb">
                     <div class="tip-icon-box"><i class="fa-solid fa-ban"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#mlbb</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #mlbb</span></div>
                         <h3 class="tip-title">Cara agar akun ml tidak ditabrak oleh penjual lama</h3>
                         <div class="tip-content">
                             1. Kick device di pusat akun dan manajemen perangkat, jika kgm sewa jasa shinji aja. <br>
@@ -1476,7 +1522,7 @@
                 <div class="tip-card" data-tags="umum ff">
                     <div class="tip-icon-box"><i class="fa-brands fa-facebook"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span> <span class="tip-tag-pill">#ff</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #umum</span> <span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #ff</span></div>
                         <h3 class="tip-title">Cara amanin ff log fb</h3>
                         <div class="tip-content">Rebind aja, lalu ganti profil dengan logo meta dan pastikan akunnya udah kekunci/Kenonaktif.</div>
                     </div>
@@ -1485,7 +1531,7 @@
                 <div class="tip-card" data-tags="umum mlbb">
                     <div class="tip-icon-box"><i class="fa-brands fa-facebook-f"></i></div>
                     <div class="tip-body">
-                        <div class="tip-tags"><span class="tip-tag-pill">#umum</span> <span class="tip-tag-pill">#mlbb</span></div>
+                        <div class="tip-tags"><span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #umum</span> <span class="tip-tag-pill"><i class="fa-solid fa-tag"></i> #mlbb</span></div>
                         <h3 class="tip-title">Cara amanin ml log fb</h3>
                         <div class="tip-content">Langsung kaitkan ke moonton aja pakai cara kaitkan moonton.</div>
                     </div>
@@ -1493,14 +1539,14 @@
             </div>
 
             <div class="tips-note-bottom">
-                Itu hanya beberapa tips jb dariku semoga bermanfaat ya
+                <i class="fa-solid fa-heart"></i> Itu hanya beberapa tips jb dariku semoga bermanfaat ya
             </div>
         </div>
 
         <!-- Footer -->
         <div class="footer">
             <p>&copy; 2025 - 2026 <span>Shinji Hirako Store</span>. All Rights Reserved.</p>
-            <p style="margin-top: 4px; opacity: 0.7; font-size: 0.75rem;">Terpercaya, Aman & Murah Meriah</p>
+            <p style="margin-top: 4px; opacity: 0.75; font-size: 0.75rem;"><i class="fa-solid fa-star"></i> Terpercaya, Aman & Murah Meriah</p>
         </div>
     </div>
 
@@ -1518,7 +1564,7 @@
         </div>
     </div>
 
-    <!-- Floating Audio Player Bar (Display Penuh) -->
+    <!-- Floating Audio Player Bar -->
     <div class="music-bar-container">
         <div class="music-bar" id="musicBar">
             <div class="music-info">
@@ -1563,7 +1609,7 @@
         checkWITAStatus();
         setInterval(checkWITAStatus, 30000);
 
-        // 2. Navigation Dropdown & Tab Switcher
+        // 2. Navigation Dropdown & Tab Switcher dengan Animasi Smooth Staggered
         function toggleMenu() {
             document.getElementById('dropdownMenu').classList.toggle('show');
         }
@@ -1575,13 +1621,21 @@
             const navTips = document.getElementById('navTips');
 
             if (tab === 'home') {
-                tabHome.style.display = 'flex';
                 tabTips.style.display = 'none';
+                tabHome.style.display = 'flex';
+                tabHome.classList.remove('tab-enter');
+                void tabHome.offsetWidth; // Force reflow
+                tabHome.classList.add('tab-enter');
+                
                 navHome.classList.add('active');
                 navTips.classList.remove('active');
             } else if (tab === 'tips') {
                 tabHome.style.display = 'none';
                 tabTips.style.display = 'flex';
+                tabTips.classList.remove('tab-enter');
+                void tabTips.offsetWidth; // Force reflow
+                tabTips.classList.add('tab-enter');
+
                 navTips.classList.add('active');
                 navHome.classList.remove('active');
             }
@@ -1664,7 +1718,6 @@
             }
         }
 
-        // Pemicu Auto-Play saat ada sentuhan/klik pertama di layar
         const enableAutoPlayOnTouch = () => {
             playAudioAt18().then(() => {
                 playIcon.className = 'fa-solid fa-pause';
