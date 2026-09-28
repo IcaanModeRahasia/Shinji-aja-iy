@@ -77,12 +77,12 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.8);
             border-radius: var(--radius-lg);
-            padding: 36px 24px;
+            padding: 36px 24px 28px 24px;
             text-align: center;
             box-shadow: var(--shadow-subtle);
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .profile-card::before {
@@ -95,11 +95,94 @@
             background: linear-gradient(90deg, #dc2626, #ef4444, #f87171, #dc2626);
             background-size: 200% 100%;
             animation: gradientMove 4s linear infinite;
+            border-top-left-radius: var(--radius-lg);
+            border-top-right-radius: var(--radius-lg);
         }
 
         @keyframes gradientMove {
             0% { background-position: 0% 0%; }
             100% { background-position: 200% 0%; }
+        }
+
+        /* Menu Garis 2 di Kanan Atas Kartu */
+        .menu-wrapper {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 20;
+        }
+
+        .menu-btn {
+            background: rgba(220, 38, 38, 0.08);
+            border: 1px solid rgba(220, 38, 38, 0.15);
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition-smooth);
+        }
+
+        .menu-btn:hover, .menu-btn:active {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .menu-btn span {
+            width: 18px;
+            height: 2.5px;
+            background-color: var(--primary);
+            border-radius: 4px;
+            transition: var(--transition-smooth);
+        }
+
+        .menu-btn:hover span, .menu-btn:active span {
+            background-color: #ffffff;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 48px;
+            background: #ffffff;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+            border-radius: 14px;
+            overflow: hidden;
+            width: 140px;
+            border: 1px solid #f1f5f9;
+            z-index: 30;
+            animation: fadeIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .dropdown-menu a:hover, .dropdown-menu a.active {
+            background-color: var(--primary-light);
+            color: var(--primary);
         }
 
         /* Avatar Container & Rotating Ring */
@@ -153,7 +236,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Badge Meta Verified (Biru) */
+        /* Badge Meta Verified Biru */
         .verified-badge {
             position: absolute;
             bottom: 2px;
@@ -216,7 +299,7 @@
             font-size: 1.15rem;
             font-weight: 700;
             color: var(--text-dark);
-            margin: 32px 0 16px 4px;
+            margin: 28px 0 16px 4px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -431,6 +514,66 @@
             opacity: 1;
         }
 
+        /* Tips JB Section */
+        .tips-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .tip-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition-smooth);
+        }
+
+        .tip-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .tip-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .tip-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .tip-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .tip-content {
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .tip-content p + p {
+            margin-top: 8px;
+        }
+
         /* Lightbox Modal */
         .lightbox-modal {
             position: fixed;
@@ -615,7 +758,7 @@
                 padding: 24px 16px 110px 16px;
             }
             .profile-card {
-                padding: 28px 18px;
+                padding: 28px 18px 24px 18px;
             }
             .profile-title {
                 font-size: 1.65rem;
@@ -641,6 +784,22 @@
     <div class="container">
         <!-- Profile Header -->
         <div class="profile-card">
+            <!-- Menu Garis 2 di Kanan Atas Kartu -->
+            <div class="menu-wrapper">
+                <button class="menu-btn" onclick="toggleMenu()" id="menuBtn" aria-label="Menu Navigasi">
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="javascript:void(0)" onclick="switchTab('home')" id="navHome" class="active">
+                        <i class="fa-solid fa-house"></i> Home
+                    </a>
+                    <a href="javascript:void(0)" onclick="switchTab('tips')" id="navTips">
+                        <i class="fa-solid fa-lightbulb"></i> Tips Jb
+                    </a>
+                </div>
+            </div>
+
             <div class="avatar-wrapper">
                 <div class="avatar-ring"></div>
                 <img id="userLogo" src="https://i.supaimg.com/6bfb8718-cebf-4b10-a2cf-b7d804bfef71/9d83ffeb-380c-41c1-95c2-2405263f611e.jpg" alt="Shinji Hirako Store" class="avatar" onerror="handleLogoError()">
@@ -665,104 +824,173 @@
             </div>
         </div>
 
-        <!-- Links Section -->
-        <div class="section-title">
-            <i class="fa-solid fa-compass"></i>
-            <span>Tautan Resmi</span>
-        </div>
-
-        <div class="links-grid">
-            <!-- Saluran WA -->
-            <a href="whatsapp://channel/0029Vb7IDQlDjiOUlVXpYs14" id="waChannelLink" class="btn-link btn-primary">
-                <div class="btn-content">
-                    <div class="btn-icon">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <div>
-                        <div>Saluran Stok FF & MLBB</div>
-                        <div style="font-size: 0.78rem; opacity: 0.9; font-weight: 500;">Update stok ready setiap hari</div>
-                    </div>
-                </div>
-                <i class="fa-solid fa-chevron-right arrow-icon"></i>
-            </a>
-
-            <!-- Testimoni Instagram -->
-            <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDYxNDY1MTYwMzM3NTQ2?story_media_id=3691155703105321445_75869492995&stkn=eHhqcnpkZjA2bWh2" target="_blank" rel="noopener" class="btn-link btn-secondary">
-                <div class="btn-content">
-                    <div class="btn-icon">
-                        <i class="fa-brands fa-instagram"></i>
-                    </div>
-                    <div>
-                        <div>Testimoni Pelanggan</div>
-                        <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 500;">Bukti transaksi asli yang sukses & aman</div>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
-            </a>
-
-            <!-- Info Lainnya -->
-            <a href="https://linkbio.co/shinjihirako" target="_blank" rel="noopener" class="btn-link btn-secondary">
-                <div class="btn-content">
-                    <div class="btn-icon">
-                        <i class="fa-solid fa-link"></i>
-                    </div>
-                    <div>
-                        <div>Info Lengkap & Kontak Asli</div>
-                        <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 500;">LinkBio resmi Shinji Hirako</div>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
-            </a>
-        </div>
-
-        <!-- Stock Gallery Section -->
-        <div class="section-title">
-            <i class="fa-solid fa-fire"></i>
-            <span>Contoh Stok Akun</span>
-        </div>
-
-        <div class="gallery-card">
-            <div class="notice-banner">
-                <i class="fa-solid fa-circle-info"></i>
-                <div>
-                    Gambar di bawah adalah <strong>contoh/histori stok</strong> kami yang sudah tidak ada. 
-                    Geser ke kanan untuk melihat contoh lainnya.
-                </div>
+        <!-- TAB CONTENT: HOME -->
+        <div id="tabHome">
+            <!-- Links Section -->
+            <div class="section-title">
+                <i class="fa-solid fa-compass"></i>
+                <span>Tautan Resmi</span>
             </div>
 
-            <div class="stock-slider">
-                <div class="stock-item" onclick="openLightbox('https://cdn.phototourl.com/member/2026-09-27-90b9830f-f968-4325-88c9-e1070180a299.jpg')">
-                    <img src="https://cdn.phototourl.com/member/2026-09-27-90b9830f-f968-4325-88c9-e1070180a299.jpg" alt="Contoh Stok 1" loading="lazy">
-                    <div class="stock-overlay">
-                        <span class="stock-tag">Sample Stok</span>
+            <div class="links-grid">
+                <!-- Saluran WA -->
+                <a href="whatsapp://channel/0029Vb7IDQlDjiOUlVXpYs14" id="waChannelLink" class="btn-link btn-primary">
+                    <div class="btn-content">
+                        <div class="btn-icon">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <div>Saluran Stok FF & MLBB</div>
+                            <div style="font-size: 0.78rem; opacity: 0.9; font-weight: 500;">Update stok ready setiap hari</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                </a>
+
+                <!-- Testimoni Instagram -->
+                <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDYxNDY1MTYwMzM3NTQ2?story_media_id=3691155703105321445_75869492995&stkn=eHhqcnpkZjA2bWh2" target="_blank" rel="noopener" class="btn-link btn-secondary">
+                    <div class="btn-content">
+                        <div class="btn-icon">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <div>
+                            <div>Testimoni Pelanggan</div>
+                            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 500;">Bukti transaksi asli yang sukses & aman</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
+                </a>
+
+                <!-- Info Lainnya -->
+                <a href="https://linkbio.co/shinjihirako" target="_blank" rel="noopener" class="btn-link btn-secondary">
+                    <div class="btn-content">
+                        <div class="btn-icon">
+                            <i class="fa-solid fa-link"></i>
+                        </div>
+                        <div>
+                            <div>Info Lengkap & Kontak</div>
+                            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 500;">LinkBio resmi Shinji Hirako</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
+                </a>
+            </div>
+
+            <!-- Stock Gallery Section -->
+            <div class="section-title">
+                <i class="fa-solid fa-fire"></i>
+                <span>Contoh Stok Akun</span>
+            </div>
+
+            <div class="gallery-card">
+                <div class="notice-banner">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <div>
+                        Gambar di bawah adalah <strong>contoh/histori stok</strong>. Yang sudah tidak ada. Geser ke kanan untuk melihat contoh lainnya.
                     </div>
                 </div>
 
-                <div class="stock-item" onclick="openLightbox('https://cdn.phototourl.com/member/2026-09-27-36fa9d44-66d9-429b-b141-dadb4e406817.jpg')">
-                    <img src="https://cdn.phototourl.com/member/2026-09-27-36fa9d44-66d9-429b-b141-dadb4e406817.jpg" alt="Contoh Stok 2" loading="lazy">
-                    <div class="stock-overlay">
-                        <span class="stock-tag">Sample Stok</span>
+                <div class="stock-slider">
+                    <div class="stock-item" onclick="openLightbox('https://cdn.phototourl.com/member/2026-09-27-90b9830f-f968-4325-88c9-e1070180a299.jpg')">
+                        <img src="https://cdn.phototourl.com/member/2026-09-27-90b9830f-f968-4325-88c9-e1070180a299.jpg" alt="Contoh Stok 1" loading="lazy">
+                        <div class="stock-overlay">
+                            <span class="stock-tag">Sample Stok</span>
+                        </div>
+                    </div>
+
+                    <div class="stock-item" onclick="openLightbox('https://cdn.phototourl.com/member/2026-09-27-36fa9d44-66d9-429b-b141-dadb4e406817.jpg')">
+                        <img src="https://cdn.phototourl.com/member/2026-09-27-36fa9d44-66d9-429b-b141-dadb4e406817.jpg" alt="Contoh Stok 2" loading="lazy">
+                        <div class="stock-overlay">
+                            <span class="stock-tag">Sample Stok</span>
+                        </div>
+                    </div>
+
+                    <div class="stock-item" onclick="openLightbox('https://cdn.phototourl.com/member/2026-09-27-5a6fb127-6642-4f4b-9293-788a6f7f332a.jpg')">
+                        <img src="https://cdn.phototourl.com/member/2026-09-27-5a6fb127-6642-4f4b-9293-788a6f7f332a.jpg" alt="Contoh Stok 3" loading="lazy">
+                        <div class="stock-overlay">
+                            <span class="stock-tag">Sample Stok</span>
+                        </div>
+                    </div>
+
+                    <div class="stock-item" onclick="openLightbox('https://cdn.phototourl.com/member/2026-09-27-7ffca96e-5835-43fb-981a-0e3b86a17ffb.jpg')">
+                        <img src="https://cdn.phototourl.com/member/2026-09-27-7ffca96e-5835-43fb-981a-0e3b86a17ffb.jpg" alt="Contoh Stok 4" loading="lazy">
+                        <div class="stock-overlay">
+                            <span class="stock-tag">Sample Stok</span>
+                        </div>
+                    </div>
+
+                    <div class="stock-item" onclick="openLightbox('https://cdn.phototourl.com/member/2026-09-27-a31fa632-7eeb-4846-ab17-788745965b13.jpg')">
+                        <img src="https://cdn.phototourl.com/member/2026-09-27-a31fa632-7eeb-4846-ab17-788745965b13.jpg" alt="Contoh Stok 5" loading="lazy">
+                        <div class="stock-overlay">
+                            <span class="stock-tag">Sample Stok</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT: TIPS JB -->
+        <div id="tabTips" style="display: none;">
+            <div class="section-title">
+                <i class="fa-solid fa-lightbulb"></i>
+                <span>Tips JB & Panduan Keamanan</span>
+            </div>
+
+            <div class="tips-container">
+                <!-- Tip 1 -->
+                <div class="tip-card">
+                    <div class="tip-header">
+                        <div class="tip-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                        <h3 class="tip-title">Cara WA Ga Gampang Kenon</h3>
+                    </div>
+                    <div class="tip-content">
+                        Kaitkan ke email dan pasang v2l, lalu jangan sering-sering chat duluan orang yg belum di save.
                     </div>
                 </div>
 
-                <div class="stock-item" onclick="openLightbox('https://cdn.phototourl.com/member/2026-09-27-5a6fb127-6642-4f4b-9293-788a6f7f332a.jpg')">
-                    <img src="https://cdn.phototourl.com/member/2026-09-27-5a6fb127-6642-4f4b-9293-788a6f7f332a.jpg" alt="Contoh Stok 3" loading="lazy">
-                    <div class="stock-overlay">
-                        <span class="stock-tag">Sample Stok</span>
+                <!-- Tip 2 -->
+                <div class="tip-card">
+                    <div class="tip-header">
+                        <div class="tip-icon"><i class="fa-solid fa-robot"></i></div>
+                        <h3 class="tip-title">Cara Hindari/Mengatasi Bug Robot</h3>
+                    </div>
+                    <div class="tip-content">
+                        Pastikan kamu device kedua yang login, agar tidak terdeteksi bahaya. Minta penjual untuk kaitkan no v2l agar bisa dipulihkan jika terkena bug robot.
                     </div>
                 </div>
 
-                <div class="stock-item" onclick="openLightbox('https://cdn.phototourl.com/member/2026-09-27-7ffca96e-5835-43fb-981a-0e3b86a17ffb.jpg')">
-                    <img src="https://cdn.phototourl.com/member/2026-09-27-7ffca96e-5835-43fb-981a-0e3b86a17ffb.jpg" alt="Contoh Stok 4" loading="lazy">
-                    <div class="stock-overlay">
-                        <span class="stock-tag">Sample Stok</span>
+                <!-- Tip 3 -->
+                <div class="tip-card">
+                    <div class="tip-header">
+                        <div class="tip-icon"><i class="fa-solid fa-lock"></i></div>
+                        <h3 class="tip-title">Cara Amanin Akun Lengket</h3>
+                    </div>
+                    <div class="tip-content">
+                        <p><strong>Jika FF:</strong> langsung rebind aja.</p>
+                        <p><strong>Jika ML:</strong> kaitin pemulihan dan v2l dahulu, lalu ubah umur ke 2020 dan kait family, setelah itu ubah umur ke 2000 lewat family link.</p>
                     </div>
                 </div>
 
-                <div class="stock-item" onclick="openLightbox('https://cdn.phototourl.com/member/2026-09-27-a31fa632-7eeb-4846-ab17-788745965b13.jpg')">
-                    <img src="https://cdn.phototourl.com/member/2026-09-27-a31fa632-7eeb-4846-ab17-788745965b13.jpg" alt="Contoh Stok 5" loading="lazy">
-                    <div class="stock-overlay">
-                        <span class="stock-tag">Sample Stok</span>
+                <!-- Tip 4 -->
+                <div class="tip-card">
+                    <div class="tip-header">
+                        <div class="tip-icon"><i class="fa-solid fa-user-gear"></i></div>
+                        <h3 class="tip-title">Cara Kaitin Moonton Akun Monkos (Moonton Kosong)</h3>
+                    </div>
+                    <div class="tip-content">
+                        Login ke MCGG, ke pengaturan, lalu ganti akun dan pilih MLBB. Jika ada akun MCGG langsung saja pencet Moonton dan kaitkan email yg mau dikaitin. Jika gada akun MCGG maka selesaikan tutorial dahulu dan lakukan seperti mana step di atas.
+                    </div>
+                </div>
+
+                <!-- Tip 5 -->
+                <div class="tip-card">
+                    <div class="tip-header">
+                        <div class="tip-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <h3 class="tip-title">Cara Hindari Riper / Scammer / Penipu</h3>
+                    </div>
+                    <div class="tip-content">
+                        <p>Gunakan rekber terpercaya seperti <strong>Shinji Hirako (Only WA)</strong>, <strong>Julie Sean (Only FB Centang Biru)</strong>, dan Admin resmi lainnya.</p>
+                        <p style="color: var(--primary); font-weight: 700; margin-top: 6px;">⚠️ Jangan tergiur harga akun murah atau tawaran yang terlalu tinggi!</p>
                     </div>
                 </div>
             </div>
@@ -812,6 +1040,43 @@
             document.getElementById('userLogo').style.display = 'none';
             document.getElementById('avatarText').style.display = 'flex';
         }
+
+        // Toggle Menu Dropdown
+        function toggleMenu() {
+            document.getElementById('dropdownMenu').classList.toggle('show');
+        }
+
+        // Switch Tab (Home vs Tips JB)
+        function switchTab(tab) {
+            const tabHome = document.getElementById('tabHome');
+            const tabTips = document.getElementById('tabTips');
+            const navHome = document.getElementById('navHome');
+            const navTips = document.getElementById('navTips');
+
+            if (tab === 'home') {
+                tabHome.style.display = 'block';
+                tabTips.style.display = 'none';
+                navHome.classList.add('active');
+                navTips.classList.remove('active');
+            } else if (tab === 'tips') {
+                tabHome.style.display = 'none';
+                tabTips.style.display = 'block';
+                navTips.classList.add('active');
+                navHome.classList.remove('active');
+            }
+
+            document.getElementById('dropdownMenu').classList.remove('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(e) {
+            const menuBtn = document.getElementById('menuBtn');
+            const dropdown = document.getElementById('dropdownMenu');
+            if (menuBtn && !menuBtn.contains(e.target) && dropdown && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
 
         // WhatsApp Direct Link Handling
         document.getElementById('waChannelLink').addEventListener('click', function(e) {
