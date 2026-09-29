@@ -3,153 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shinji Hirako - Store</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Shinji Hirako - LinkBio Store</title>
+    <!-- Tailwind CSS untuk Styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons untuk Ikon Modern -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Custom Keyframes untuk Animasi Tambahan */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-4px); }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
+        .shimmer-badge {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            animation: shimmer 2s infinite;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-red-50 via-white to-red-50 min-h-screen text-gray-800 pb-24">
+<body class="bg-neutral-950 text-neutral-100 min-h-screen flex justify-center items-start py-6 px-4 selection:bg-red-600 selection:text-white font-sans">
 
-    <!-- Container Utama Website -->
-    <div class="max-w-md mx-auto min-h-screen bg-white/80 backdrop-blur-md shadow-lg flex flex-col justify-between relative overflow-hidden">
+    <!-- Container Utama ala Mobile View -->
+    <div class="w-full max-w-md bg-white text-neutral-900 rounded-3xl shadow-2xl overflow-hidden relative border border-neutral-200">
         
-        <!-- Header / Top Bar -->
-        <div>
-            <div class="flex items-center justify-between px-5 pt-4 pb-2">
-                <!-- Status Offline -->
-                <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-white rounded-full text-xs font-medium shadow-xs border border-red-100">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-                    </span>
-                    <span class="text-gray-700">Offline</span>
-                </div>
-
-                <!-- Tombol Menu / Hamburger -->
-                <button class="p-2 bg-white rounded-xl shadow-xs border border-red-100 text-red-500 hover:bg-red-50 transition">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+        <!-- Header / Navbar Minimalis -->
+        <div class="flex justify-between items-center px-6 pt-5 pb-2">
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
+                <span class="text-xs font-semibold tracking-wider text-neutral-500 uppercase">Official Bio</span>
             </div>
+            <!-- Tombol Menu Toggle -->
+            <button onclick="toggleMenu()" class="p-2.5 rounded-full bg-neutral-100 hover:bg-neutral-200 transition active:scale-95 text-neutral-800 shadow-sm">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+        </div>
 
-            <!-- Bagian Profil Utama (Dirapatkan) -->
-            <div class="flex flex-col items-center text-center px-4 pt-1 space-y-2">
-                
-                <!-- Avatar dengan Animasi Lingkaran & Foto Shinji -->
-                <div class="relative w-32 h-32 flex items-center justify-center my-1">
-                    <!-- Lingkaran Putus-putus dengan Animasi Putar -->
-                    <div class="absolute inset-0 border-2 border-dashed border-red-500 rounded-full animate-[spin_12s_linear_infinite]"></div>
-                    
-                    <!-- Foto Shinji dengan Efek Animasi Float & Pulse -->
-                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md animate-float">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="Shinji Hirako" class="w-full h-full object-cover">
-                    </div>
+        <!-- Dropdown Menu Modern -->
+        <div id="dropdownMenu" class="hidden absolute top-16 right-6 bg-white border border-neutral-100 shadow-2xl rounded-2xl w-48 py-2 z-50 animate-fade-in">
+            <button onclick="switchTab('home')" class="w-full text-left px-4 py-2.5 hover:bg-red-50 hover:text-red-600 flex items-center gap-3 text-sm font-medium transition">
+                <i data-lucide="home" class="w-4 h-4"></i> Home
+            </button>
+            <button onclick="switchTab('tips')" class="w-full text-left px-4 py-2.5 hover:bg-red-50 hover:text-red-600 flex items-center gap-3 text-sm font-medium transition">
+                <i data-lucide="shield-alert" class="w-4 h-4"></i> Tips JB & Keamanan
+            </button>
+        </div>
 
-                    <!-- Badge Verifikasi Animasi Premium -->
-                    <div class="absolute bottom-1 right-3 bg-gradient-to-r from-amber-400 to-orange-500 text-white p-1 rounded-full shadow-lg animate-bounce flex items-center justify-center w-6 h-6 border-2 border-white" title="Verified Premium">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                    </div>
+        <!-- Profil Section -->
+        <div class="flex flex-col items-center px-6 pt-4 pb-6 text-center border-b border-neutral-100">
+            <div class="relative mb-3">
+                <!-- Foto Profil dengan Border Gradien -->
+                <div class="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-red-600 to-rose-400 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Avatar" class="w-full h-full object-cover rounded-full">
                 </div>
-
-                <!-- Nama & Bio -->
-                <div class="space-y-1">
-                    <h1 class="text-xl font-extrabold text-gray-900 tracking-tight">Shinji Hirako</h1>
-                    <p class="text-xs text-gray-600 max-w-xs leading-relaxed px-2">
-                        Reseller MLBB & Free Fire Murah, Terpercaya & Amanah Sejak 2025. Melayani dengan cepat, profesional, dan anti drama!
-                    </p>
-                </div>
-
-                <!-- Badge Fitur (Keunggulan) -->
-                <div class="flex flex-wrap justify-center gap-2 pt-1">
-                    <span class="px-3 py-1 bg-red-50 text-red-600 text-xs font-semibold rounded-full border border-red-100 shadow-2xs">
-                        🛡️ 100% Terpercaya
-                    </span>
-                    <span class="px-3 py-1 bg-red-50 text-red-600 text-xs font-semibold rounded-full border border-red-100 shadow-2xs">
-                        ⚡ Proses Kilat
-                    </span>
-                    <span class="px-3 py-1 bg-red-50 text-red-600 text-xs font-semibold rounded-full border border-red-100 shadow-2xs">
-                        🏷️ Harga Murah
-                    </span>
+                <!-- Centang Biru dengan Efek Mengkilap -->
+                <div class="absolute bottom-0 right-0 bg-blue-500 text-white p-1 rounded-full border-2 border-white shadow shimmer-badge flex items-center justify-center" title="Verified Account">
+                    <i data-lucide="badge-check" class="w-4 h-4"></i>
                 </div>
             </div>
+            
+            <h1 class="text-xl font-bold tracking-tight text-neutral-900 flex items-center gap-1.5 justify-center">
+                Shinji Hirako
+            </h1>
+            <p class="text-xs font-medium text-neutral-500 mt-1">
+                Reseller MLBB & Free Fire Murah <br> Terpercaya & Amanah Sejak 2025[span_4](start_span)[span_4](end_span). <br> Melayani dengan cepat, profesional, dan ramah[span_5](start_span)[span_5](end_span)!
+            </p>
 
-            <!-- Bagian Tautan Resmi & Menu (Logo Testi Dihilangkan, Hanya Teks) -->
-            <div class="mt-5 px-5 space-y-3">
-                <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Tautan Resmi</h2>
-                
-                <!-- Saluran Stok FF -->
-                <a href="#" class="flex items-center justify-between p-3.5 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-2xl shadow-md hover:opacity-95 transition-all">
-                    <span class="font-semibold text-sm">Saluran Stok FF & ML Terbaru</span>
-                    <span class="text-xs bg-white/20 px-2.5 py-1 rounded-lg">Buka</span>
-                </a>
-
-                <!-- Menu Testimoni Pelanggan (Tanpa Logo, Hanya Teks) -->
-                <a href="#" class="flex items-center justify-between p-3.5 bg-white rounded-2xl shadow-xs border border-gray-100 hover:border-red-200 transition-all">
-                    <span class="font-semibold text-gray-800 text-sm">Testimoni Pelanggan</span>
-                    <span class="text-gray-400 text-xs font-bold">→</span>
-                </a>
-
-                <!-- Menu Big Testi (Tanpa Logo, Hanya Teks) -->
-                <a href="#" class="flex items-center justify-between p-3.5 bg-white rounded-2xl shadow-xs border border-gray-100 hover:border-red-200 transition-all">
-                    <span class="font-semibold text-gray-800 text-sm">Big Testi</span>
-                    <span class="text-gray-400 text-xs font-bold">→</span>
-                </a>
+            <!-- Badges Keunggulan -->
+            <div class="flex gap-2 mt-4">
+                <span class="inline-flex items-center gap-1 px-3 py-1 bg-red-50 text-red-600 text-xs font-semibold rounded-full border border-red-100">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> 100% Terpercaya[span_6](start_span)[span_6](end_span)
+                </span>
+                <span class="inline-flex items-center gap-1 px-3 py-1 bg-red-50 text-red-600 text-xs font-semibold rounded-full border border-red-100">
+                    <i data-lucide="zap" class="w-3.5 h-3.5"></i> Proses Kilat[span_7](start_span)[span_7](end_span)
+                </span>
+            </div>
+            
+            <div class="mt-3">
+                <span class="inline-flex items-center gap-1 px-3 py-1 bg-neutral-900 text-white text-xs font-semibold rounded-full shadow-sm">
+                    <i data-lucide="tag" class="w-3.5 h-3.5 text-red-400"></i> Harga Murah[span_8](start_span)[span_8](end_span)
+                </span>
             </div>
         </div>
 
-        <!-- Tombol Chat Mengambang (Floating Chat Shinji) -->
-        <div class="px-5 mt-6">
-            <a href="#" class="flex items-center justify-center gap-2 w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl shadow-lg transition-all">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                Chat Shinji
-            </a>
-        </div>
+        <!-- Konten Utama (Dinamis: Home / Tips) -->
+        <main class="p-6 space-y-6">
+            
+            <!-- TAB HOME -->
+            <div id="tab-home" class="space-y-4 animate-fade-in">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-neutral-400 flex items-center gap-2">
+                    <i data-lucide="link" class="w-4 h-4 text-red-600"></i> Tautan Resmi[span_9](start_span)[span_9](end_span)
+                </h2>
 
-        <!-- Pemutar Musik Bawaan (24/7 Song) di Bagian Bawah -->
-        <div class="fixed bottom-4 left-0 right-0 px-5 z-50">
-            <div class="max-w-md mx-auto bg-white/95 backdrop-blur-md border border-red-100 shadow-xl rounded-2xl p-3 flex items-center justify-between">
+                <!-- Link Items -->
+                <a href="https://whatsapp.com" target="_blank" class="group flex items-center justify-between p-4 bg-neutral-50 hover:bg-red-50 border border-neutral-200 hover:border-red-200 rounded-2xl transition duration-300 shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 rounded-xl bg-red-100 text-red-600 group-hover:scale-110 transition">
+                            <i data-lucide="message-square" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-neutral-900">Saluran Stok FF & MLBB[span_10](start_span)[span_10](end_span)</h3>
+                            <p class="text-xs text-neutral-500">Update stok ready setiap hari[span_11](start_span)[span_11](end_span)</p>
+                        </div>
+                    </div>
+                    <i data-lucide="external-link" class="w-4 h-4 text-neutral-400 group-hover:text-red-600 transition"></i>
+                </a>
+
+                <a href="https://instagram.com" target="_blank" class="group flex items-center justify-between p-4 bg-neutral-50 hover:bg-red-50 border border-neutral-200 hover:border-red-200 rounded-2xl transition duration-300 shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2.5 rounded-xl bg-red-100 text-red-600 group-hover:scale-110 transition">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-neutral-900">Testimoni Pelanggan[span_12](start_span)[span_12](end_span)</h3>
+                            <p class="text-xs text-neutral-500">Bukti transaksi sukses & aman[span_13](start_span)[span_13](end_span)</p>
+                        </div>
+                    </div>
+                    <i data-lucide="external-link" class="w-4 h-4 text-neutral-400 group-hover:text-red-600 transition"></i>
+                </a>
+
+                <!-- QRIS Banner -->
+                <div onclick="openQrisModal()" class="cursor-pointer group relative p-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-2xl shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm">
+                                <i data-lucide="qr-code" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold">Traktir Shinji[span_14](start_span)[span_14](end_span)</h3>
+                                <p class="text-xs text-amber-100">Klik di sini untuk lihat QRIS[span_15](start_span)[span_15](end_span)</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-5 h-5 group-hover:translate-x-1 transition"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB TIPS JB -->
+            <div id="tab-tips" class="hidden space-y-4 animate-fade-in">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-neutral-400 flex items-center gap-2">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-red-600"></i> Tips JB & Panduan Keamanan[span_16](start_span)[span_16](end_span)
+                </h2>
+
+                <div class="p-4 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-2">
+                    <span class="inline-block px-2 py-0.5 bg-red-100 text-red-600 text-[10px] font-bold rounded">#umum</span>
+                    <h3 class="text-sm font-bold text-neutral-900">Cara WA Gak Gampang Kenon[span_17](start_span)[span_17](end_span)</h3>
+                    <p class="text-xs text-neutral-600 leading-relaxed">Kaitkan ke email dan pasang v2l, lalu jangan sering-sering chat duluan orang yang belum di save, hindari chat spam/unsur yg buruk[span_18](start_span)[span_18](end_span).</p>
+                </div>
+
+                <div class="p-4 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-2">
+                    <span class="inline-block px-2 py-0.5 bg-red-100 text-red-600 text-[10px] font-bold rounded">#google</span>
+                    <h3 class="text-sm font-bold text-neutral-900">Cara Hindari/Mengatasi Bug Robot[span_19](start_span)[span_19](end_span)</h3>
+                    <p class="text-xs text-neutral-600 leading-relaxed">Pastikan kamu device kedua yang login (dev ke 3 = bug robot). Minta penjual untuk kaitkan nomor v2l agar bisa dipulihkan jika terkena bug robot[span_20](start_span)[span_20](end_span).</p>
+                </div>
+            </div>
+
+            <!-- Mini Pemutar Musik / Audio Player -->
+            <div class="p-3 bg-neutral-900 text-white rounded-2xl flex items-center justify-between shadow-md">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-red-500 flex items-center justify-center text-white shadow-sm animate-spin">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                    <div class="w-9 h-9 rounded-xl bg-red-600 flex items-center justify-center animate-spin" style="animation-duration: 8s;">
+                        <i data-lucide="disc" class="w-5 h-5 text-white"></i>
                     </div>
                     <div>
-                        <h4 class="text-xs font-bold text-gray-900">24/7 Song</h4>
-                        <p class="text-[10px] text-gray-500">247_romario.mp3</p>
+                        <p class="text-xs font-bold">24/7 Song[span_21](start_span)[span_21](end_span)</p>
+                        <p class="text-[10px] text-neutral-400">Sedang diputar...</p>
                     </div>
                 </div>
-                <!-- Tombol Play/Pause -->
-                <button id="playBtn" class="w-10 h-10 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center shadow-md transition">
-                    <svg id="playIcon" class="w-5 h-5 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <button onclick="togglePlay(this)" class="p-2 rounded-full bg-neutral-800 hover:bg-neutral-700 transition">
+                    <i data-lucide="pause" class="w-4 h-4" id="playIcon"></i>
                 </button>
             </div>
-        </div>
 
+        </main>
+
+        <!-- Footer -->
+        <footer class="py-4 text-center border-t border-neutral-100 text-[10px] text-neutral-400">
+            © 2025 - 2026 Shinji Hirako Store. All Rights Reserved[span_22](start_span)[span_22](end_span).
+        </footer>
     </div>
 
+    <!-- Modal QRIS Pop-up -->
+    <div id="qrisModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-white text-neutral-900 rounded-3xl p-6 max-w-xs w-full text-center relative animate-fade-in shadow-2xl">
+            <button onclick="closeQrisModal()" class="absolute top-4 right-4 p-1.5 rounded-full bg-neutral-100 hover:bg-neutral-200 transition">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+            <h3 class="text-base font-bold mb-1">QRIS Shinji Market[span_23](start_span)[span_23](end_span)</h3>
+            <p class="text-xs text-neutral-500 mb-4">Scan QRIS di bawah untuk pembayaran[span_24](start_span)[span_24](end_span)</p>
+            <div class="p-3 bg-neutral-50 border border-neutral-200 rounded-2xl inline-block mb-4">
+                <!-- Contoh Ilustrasi QR Code / Foto QRIS -->
+                <div class="w-48 h-48 bg-neutral-200 rounded-xl flex items-center justify-center text-xs text-neutral-500 font-medium">
+                    [Gambar QRIS Asli]
+                </div>
+            </div>
+            <p class="text-[10px] text-neutral-400">Pastikan nominal sesuai dengan tagihan[span_25](start_span)[span_25](end_span).</p>
+        </div>
+    </div>
+
+    <!-- Skrip Interaktif -->
     <script>
-        // Logika Interaksi Sederhana untuk Tombol Musik (Opsional)
-        const playBtn = document.getElementById('playBtn');
-        let isPlaying = false;
-        playBtn.addEventListener('click', () => {
-            isPlaying = !isPlaying;
-            if(isPlaying) {
-                playBtn.innerHTML = `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+        // Inisialisasi Lucide Icons
+        lucide.createIcons();
+
+        // Toggle Dropdown Menu Header
+        function toggleMenu() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Fungsi Animasi Pergantian Tab (Home / Tips JB)
+        function switchTab(tabName) {
+            const tabHome = document.getElementById('tab-home');
+            const tabTips = document.getElementById('tab-tips');
+            const menu = document.getElementById('dropdownMenu');
+
+            menu.classList.add('hidden'); // Tutup menu setelah diklik
+
+            if (tabName === 'home') {
+                tabTips.classList.add('hidden');
+                tabHome.classList.remove('hidden');
             } else {
-                playBtn.innerHTML = `<svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+                tabHome.classList.add('hidden');
+                tabTips.classList.remove('hidden');
             }
-        });
+        }
+
+        // Modal QRIS Handler
+        function openQrisModal() {
+            document.getElementById('qrisModal').classList.remove('hidden');
+            document.getElementById('qrisModal').classList.add('flex');
+        }
+
+        function closeQrisModal() {
+            document.getElementById('qrisModal').classList.add('hidden');
+            document.getElementById('qrisModal').classList.remove('flex');
+        }
+
+        // Simulasi Tombol Play/Pause Musik
+        let isPlaying = true;
+        function togglePlay(btn) {
+            isPlaying = !isPlaying;
+            const icon = document.getElementById('playIcon');
+            icon.setAttribute('data-lucide', isPlaying ? 'pause' : 'play');
+            lucide.createIcons();
+        }
     </script>
 </body>
 </html>
